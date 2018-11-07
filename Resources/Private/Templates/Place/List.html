@@ -1,0 +1,76 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers" data-namespace-typo3-fluid="true">
+{namespace pm=M2S\PoiMap\ViewHelpers}
+
+<f:layout name="Default"/>
+
+<f:section name="Main">
+    <h2><f:translate key="list.header"/></h2>
+    <table style="width: 100%;border-collapse: collapse;border-top: 1px solid #000000;border-left: 1px solid #000000;text-align: center;">
+        <thead style="background: #333333;color: #ffffff;">
+            <tr style="border-bottom: 1px solid #000000;">
+                <th style="border-right: 1px solid #000000;"><f:translate key="list.field.name"/></th>
+                <th style="border-right: 1px solid #000000;"><f:translate key="list.field.alternateName"/></th>
+                <th style="border-right: 1px solid #000000;"><f:translate key="list.field.description"/></th>
+                <th style="border-right: 1px solid #000000;"><f:translate key="list.field.disambiguatingDescription"/></th>
+                <th style="border-right: 1px solid #000000;"><f:translate key="list.field.image"/></th>
+                <th style="border-right: 1px solid #000000;"><f:translate key="list.field.geoCoordinates"/></th>
+                <th style="border-right: 1px solid #000000;"><f:translate key="list.field.url"/></th>
+            </tr>
+        </thead>
+        <tbody>
+            <f:if condition="{places}">
+                <f:then>
+                    <f:for each="{places}" as="place">
+                        <tr style="border-bottom: 1px solid #000000;">
+                            <td style="border-right: 1px solid #000000;">
+                                {place.name}
+                            </td>
+                            <td style="border-right: 1px solid #000000;">
+                                {place.alternateName}
+                            </td>
+                            <td style="border-right: 1px solid #000000;">
+                                <f:format.html>{place.description}</f:format.html>
+                            </td>
+                            <td style="border-right: 1px solid #000000;">
+                                <f:format.html>{place.disambiguatingDescription}</f:format.html>
+                            </td>
+                            <td style="border-right: 1px solid #000000;">
+                                <f:if condition="{place.image}">
+                                    <f:image image="{place.image}" width="200c" height="100c"/>
+                                </f:if>
+                            </td>
+                            <td style="border-right: 1px solid #000000;width: 300px">
+                                <pm:map
+                                    places="{0: place}"
+                                    options="{
+                                        disableDefaultUI: 1,
+                                        draggable: 0,
+                                        scrollwheel: 0,
+                                        disableDoubleClickZoom: 1
+                                    }"
+                                    zoom="9"
+                                    type="{mapType}"
+                                    mapStyles="{mapStyles}"
+                                    enableInfo="0"
+                                    style="width:100%; height: 200px;"
+                                />
+                            </td>
+                            <td style="border-right: 1px solid #000000;">
+                                <f:if condition="{place.url}">
+                                    <f:link.typolink parameter="{place.url}"/>
+                                </f:if>
+                            </td>
+                        </tr>
+                    </f:for>
+                </f:then>
+                <f:else>
+                    <tr style="border-bottom: 1px solid #000000;">
+                        <td style="border-right: 1px solid #000000;" colspan="7">
+                            <f:translate key="list.empty"/>
+                        </td>
+                    </tr>
+                </f:else>
+            </f:if>
+        </tbody>
+    </table>
+</f:section>

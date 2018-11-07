@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-09-27T09:04:32Z" product-name="poi_map">
+		<header/>
+		<body>
+			<trans-unit id="list.header">
+				<source>Places List</source>
+			</trans-unit>
+			<trans-unit id="list.empty">
+				<source>No places found</source>
+			</trans-unit>
+			<trans-unit id="list.field.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="list.field.alternateName">
+				<source>Alternate name</source>
+			</trans-unit>
+			<trans-unit id="list.field.description">
+				<source>Short description</source>
+			</trans-unit>
+			<trans-unit id="list.field.disambiguatingDescription">
+				<source>Long description</source>
+			</trans-unit>
+			<trans-unit id="list.field.image">
+				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="list.field.geoCoordinates">
+				<source>Geo coordinates</source>
+			</trans-unit>
+			<trans-unit id="list.field.url">
+				<source>Link</source>
+			</trans-unit>
+			<trans-unit id="map.header">
+				<source>Places Map</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

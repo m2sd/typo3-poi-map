@@ -1,0 +1,9 @@
+.t3js-poimap-position-picker {
+    width: 100%;
+    height: 400px;
+}
+
+.t3js-poimap-position-picker .t3js-poimap-map {
+    width: 100%;
+    height: 100%;
+}

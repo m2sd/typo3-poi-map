@@ -1,0 +1,35 @@
+{
+    "name": "m2s/typo3-poi-map",
+    "type": "typo3-cms-extension",
+    "description": "Categorized points of interest with GoogleMaps integration",
+    "version": "1.0.0",
+    "keywords": [
+        "typo3",
+        "google maps",
+        "locations",
+        "places",
+        "points of interest"
+    ],
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Michael Marcenich",
+            "email": "info@m-squared-solutions.it",
+            "homepage": "https://m-squared-solutions.it",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.0 <7.3",
+        "typo3/cms-core": "^8.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "M2S\\PoiMap\\": "Classes/"
+        }
+    },
+    "replace": {
+        "poi_map": "self.version",
+        "typo3-ter/poi_map": "self.version"
+    }
+}

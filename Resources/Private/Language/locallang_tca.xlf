@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-09-27T09:04:32Z" product-name="poi_map">
+		<header/>
+		<body>
+			<trans-unit id="tab.general">
+				<source>General</source>
+			</trans-unit>
+			<trans-unit id="tab.images">
+				<source>Images</source>
+			</trans-unit>
+			<trans-unit id="tab.coordinates">
+				<source>Coordinates</source>
+			</trans-unit>
+			<trans-unit id="control.maps">
+				<source>Select position</source>
+			</trans-unit>
+			<trans-unit id="tx_poimap_domain_model_place.palette.names">
+				<source>Denomination</source>
+			</trans-unit>
+			<trans-unit id="tx_poimap_domain_model_place.palette.descriptions">
+				<source>Details</source>
+			</trans-unit>
+			<trans-unit id="tx_poimap_domain_model_place">
+				<source>Place</source>
+			</trans-unit>
+			<trans-unit id="tx_poimap_domain_model_place.additional_type.I.0">
+				<source>Default</source>
+			</trans-unit>
+			<trans-unit id="tx_poimap_domain_model_place.additional_type.I.TouristAttraction">
+				<source>Tourist attraction</source>
+			</trans-unit>
+			<trans-unit id="tx_poimap_domain_model_place.additional_type.I.LandmarksOrHistoricalBuildings">
+				<source>Landmarks or historical buildings</source>
+			</trans-unit>
+			<trans-unit id="tx_poimap_domain_model_place.additional_type.I.Accommodation">
+				<source>Accomodation</source>
+			</trans-unit>
+			<trans-unit id="tx_poimap_domain_model_place.additional_type.I.LocalBusiness">
+				<source>Local business</source>
+			</trans-unit>
+			<trans-unit id="tx_poimap_domain_model_place.additional_type.I.Residence">
+				<source>Residence</source>
+			</trans-unit>
+			<trans-unit id="tx_poimap_domain_model_place.additional_type.I.Landform">
+				<source>Landform</source>
+			</trans-unit>
+			<trans-unit id="tx_poimap_domain_model_place.additional_type.I.CivicStructure">
+				<source>Civic structure</source>
+			</trans-unit>
+			<trans-unit id="tx_poimap_domain_model_place.additional_type.I.AdministrativeArea">
+				<source>Administrative area</source>
+			</trans-unit>
+			<trans-unit id="tx_poimap_domain_model_place.name">
+				<source>Name:</source>
+			</trans-unit>
+			<trans-unit id="tx_poimap_domain_model_place.alternate_name">
+				<source>Alternate name:</source>
+			</trans-unit>
+			<trans-unit id="tx_poimap_domain_model_place.url">
+				<source>URL:</source>
+			</trans-unit>
+			<trans-unit id="tx_poimap_domain_model_place.url.form_label">
+				<source>URL</source>
+			</trans-unit>
+			<trans-unit id="tx_poimap_domain_model_place.description">
+				<source>Description:</source>
+			</trans-unit>
+			<trans-unit id="tx_poimap_domain_model_place.disambiguating_description">
+				<source>Disambiguating description:</source>
+			</trans-unit>
+			<trans-unit id="tx_poimap_domain_model_place.image">
+				<source>Image:</source>
+			</trans-unit>
+			<trans-unit id="tx_poimap_domain_model_place.image.create_record">
+				<source>Choose image</source>
+			</trans-unit>
+			<trans-unit id="tx_poimap_domain_model_place.geo_coordinates">
+				<source>Coordinates:</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
