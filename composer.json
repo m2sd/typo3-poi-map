@@ -30,6 +30,6 @@
     },
     "replace": {
         "poi_map": "self.version",
-        "typo3-ter/poi_map": "self.version"
+        "typo3-ter/poi-map": "self.version"
     }
 }
