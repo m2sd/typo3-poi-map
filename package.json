@@ -1,0 +1,45 @@
+{
+  "name": "typo3-poi-map",
+  "version": "1.0.0",
+  "description": "A Typo3 extensions which adds categorized points of interest with GoogleMaps integration",
+  "private": true,
+  "scripts": {
+    "dev": "webpack --mode development",
+    "dev:watch": "npm run dev -- --watch",
+    "build": "webpack --mode production",
+    "build:analyze": "npm run build -- --env.BUILD_ADDON analyze",
+    "lint": "eslint .",
+    "lint:fix": "npm run lint -- --fix",
+    "lint:check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m2sd/typo3-poi-map.git"
+  },
+  "keywords": [],
+  "author": "Michael Marcenich <info@m-squared-solutions.it> (https://m-sqaured-solutions.it)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/m2sd/typo3-poi-map/issues"
+  },
+  "homepage": "https://github.com/m2sd/typo3-poi-map#readme",
+  "devDependencies": {
+    "@babel/core": "^7.1.5",
+    "@babel/preset-env": "^7.1.5",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.4",
+    "css-loader": "^1.0.1",
+    "eslint": "^5.9.0",
+    "eslint-config-prettier": "^3.2.0",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-prettier": "^3.0.0",
+    "prettier": "^1.15.2",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.25.1",
+    "webpack-bundle-analyzer": "^3.0.3",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "snazzy-info-window": "^1.1.1"
+  }
+}

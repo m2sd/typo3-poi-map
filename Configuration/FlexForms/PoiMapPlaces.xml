@@ -1,207 +1,227 @@
 <T3DataStructure>
-    <sheets>
-        <sDEF>
-            <ROOT>
-                <TCEforms>
-                    <sheetTitle>LLL:EXT:poi_map/Resources/Private/Language/locallang_ff.xlf:appearance</sheetTitle>
-                </TCEforms>
-                <type>array</type>
-                <el>
-                    <switchableControllerActions>
-                        <TCEforms>
-                            <label>LLL:EXT:poi_map/Resources/Private/Language/locallang_ff.xlf:appearance.layout</label>
-                            <config>
-                                <type>select</type>
-                                <items type="array">
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">List</numIndex>
-                                        <numIndex index="1">Place->list</numIndex>
-                                    </numIndex>
-                                    <numIndex index="1" type="array">
-                                        <numIndex index="0">Map</numIndex>
-                                        <numIndex index="1">Place->map</numIndex>
-                                    </numIndex>
-                                </items>
-                            </config>
-                            <onChange>reload</onChange>
-                        </TCEforms>
-                    </switchableControllerActions>
-                    <settings.appearance.type>
-                        <TCEforms>
-                            <exclude>1</exclude>
-                            <label>LLL:EXT:poi_map/Resources/Private/Language/locallang_ff.xlf:appearance.type</label>
-                            <config>
-                                <type>select</type>
-                                <items type="array">
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">default</numIndex>
-                                        <numIndex index="1"></numIndex>
-                                    </numIndex>
-                                    <numIndex index="1" type="array">
-                                        <numIndex index="0">ROADMAP</numIndex>
-                                        <numIndex index="1">roadmap</numIndex>
-                                    </numIndex>
-                                    <numIndex index="2" type="array">
-                                        <numIndex index="0">SATELLITE</numIndex>
-                                        <numIndex index="1">satellite</numIndex>
-                                    </numIndex>
-                                    <numIndex index="3" type="array">
-                                        <numIndex index="0">HYBRID</numIndex>
-                                        <numIndex index="1">hybrid</numIndex>
-                                    </numIndex>
-                                    <numIndex index="4" type="array">
-                                        <numIndex index="0">TERRAIN</numIndex>
-                                        <numIndex index="1">terrain</numIndex>
-                                    </numIndex>
-                                </items>
-                            </config>
-                        </TCEforms>
-                    </settings.appearance.type>
-                    <settings.appearance.style>
-                        <TCEforms>
-                            <exclude>1</exclude>
-                            <label>LLL:EXT:poi_map/Resources/Private/Language/locallang_ff.xlf:appearance.style</label>
-                            <config>
-                                <type>text</type>
-                                <cols>40</cols>
-                                <rows>15</rows>
-                            </config>
-                        </TCEforms>
-                    </settings.appearance.style>
-                    <settings.appearance.showInfo>
-                        <TCEforms>
-                            <exclude>1</exclude>
-                            <label>LLL:EXT:poi_map/Resources/Private/Language/locallang_ff.xlf:appearance.showInfo</label>
-                            <config>
-                                <type>check</type>
-                                <default>1</default>
-                            </config>
-                            <displayCond>FIELD:switchableControllerActions:=:Place->map</displayCond>
-                        </TCEforms>
-                    </settings.appearance.showInfo>
-                    <settings.appearance.showInfoSingle>
-                        <TCEforms>
-                            <exclude>1</exclude>
-                            <label>LLL:EXT:poi_map/Resources/Private/Language/locallang_ff.xlf:appearance.showInfoSingle</label>
-                            <config>
-                                <type>check</type>
-                                <default>1</default>
-                            </config>
-                            <displayCond>FIELD:switchableControllerActions:=:Place->map</displayCond>
-                        </TCEforms>
-                    </settings.appearance.showInfoSingle>
-                    <settings.appearance.center>
-                        <TCEforms>
-                            <exclude>1</exclude>
-                            <label>LLL:EXT:poi_map/Resources/Private/Language/locallang_ff.xlf:appearance.center</label>
-                            <config>
-                                <type>input</type>
-                                <size>100</size>
-                                <max>50</max>
-                                <fieldWizard>
-                                    <mapsPositionPicker>
-                                        <renderType>mapsPositionPicker</renderType>
-                                    </mapsPositionPicker>
-                                </fieldWizard>
-                            </config>
-                            <displayCond>FIELD:switchableControllerActions:=:Place->map</displayCond>
-                        </TCEforms>
-                    </settings.appearance.center>
-                    <settings.appearance.zoom>
-                        <TCEforms>
-                            <exclude>1</exclude>
-                            <label>LLL:EXT:poi_map/Resources/Private/Language/locallang_ff.xlf:appearance.zoom</label>
-                            <config>
-                                <type>input</type>
-                                <size>10</size>
-                                <eval>int,trim</eval>
-                                <range>
-                                    <lower>0</lower>
-                                    <upper>18</upper>
-                                </range>
-                                <default>9</default>
-                                <slider>
-                                    <step>1</step>
-                                    <width>200</width>
-                                </slider>
-                            </config>
-                            <displayCond>FIELD:switchableControllerActions:=:Place->map</displayCond>
-                        </TCEforms>
-                    </settings.appearance.zoom>
-                </el>
-            </ROOT>
-        </sDEF>
-        <sFILTERS>
-            <ROOT>
-                <TCEforms>
-                    <sheetTitle>LLL:EXT:poi_map/Resources/Private/Language/locallang_ff.xlf:filters</sheetTitle>
-                </TCEforms>
-                <type>array</type>
-                <el>
-                    <settings.filters.categories>
-                        <TCEforms>
-                            <exclude>1</exclude>
-                            <label>LLL:EXT:poi_map/Resources/Private/Language/locallang_ff.xlf:filters.categories</label>
-                            <config>
-                                <type>select</type>
-                                <autoSizeMax>10</autoSizeMax>
-                                <foreign_table>sys_category</foreign_table>
-                                <foreign_table_where> AND sys_category.sys_language_uid IN (-1, 0) ORDER BY sys_category.sorting ASC</foreign_table_where>
-                                <maxitems>9999</maxitems>
-                                <renderMode>tree</renderMode>
-                                <size>10</size>
-                                <treeConfig>
-                                    <appearance>
-                                        <expandAll>1</expandAll>
-                                        <showHeader>1</showHeader>
-                                    </appearance>
-                                    <parentField>parent</parentField>
-                                </treeConfig>
-                            </config>
-                        </TCEforms>
-                    </settings.filters.categories>
-                    <settings.filters.subcategories>
-                        <TCEforms>
-                            <exclude>1</exclude>
-                            <label>LLL:EXT:poi_map/Resources/Private/Language/locallang_ff.xlf:filters.subcategories</label>
-                            <config>
-                                <type>check</type>
-                            </config>
-                        </TCEforms>
-                    </settings.filters.subcategories>
-                    <settings.filters.pages>
-                        <TCEforms>
-                            <exclude>1</exclude>
-                            <label>LLL:EXT:poi_map/Resources/Private/Language/locallang_ff.xlf:filters.pages</label>
-                            <config>
-                                <type>select</type>
-                                <autoSizeMax>10</autoSizeMax>
-                                <foreign_table>pages</foreign_table>
-                                <foreign_table_where> ORDER BY pages.sorting ASC</foreign_table_where>
-                                <maxitems>9999</maxitems>
-                                <renderMode>tree</renderMode>
-                                <size>10</size>
-                                <treeConfig>
-                                    <appearance>
-                                        <expandAll>1</expandAll>
-                                        <showHeader>1</showHeader>
-                                    </appearance>
-                                    <parentField>pid</parentField>
-                                </treeConfig>
-                            </config>
-                        </TCEforms>
-                    </settings.filters.pages>
-                    <settings.filters.subpages>
-                        <TCEforms>
-                            <exclude>1</exclude>
-                            <label>LLL:EXT:poi_map/Resources/Private/Language/locallang_ff.xlf:filters.subpages</label>
-                            <config>
-                                <type>check</type>
-                            </config>
-                        </TCEforms>
-                    </settings.filters.subpages>
-                </el>
-            </ROOT>
-        </sFILTERS>
-    </sheets>
+  <sheets>
+    <sDEF>
+      <ROOT>
+        <TCEforms>
+          <sheetTitle>LLL:EXT:poi_map/Resources/Private/Language/locallang_ff.xlf:appearance</sheetTitle>
+        </TCEforms>
+        <type>array</type>
+        <el>
+          <switchableControllerActions>
+            <TCEforms>
+              <label>LLL:EXT:poi_map/Resources/Private/Language/locallang_ff.xlf:appearance.layout</label>
+              <config>
+                <type>select</type>
+                <items type="array">
+                  <numIndex index="0" type="array">
+                    <numIndex index="0">List</numIndex>
+                    <numIndex index="1">Place->list</numIndex>
+                  </numIndex>
+                  <numIndex index="1" type="array">
+                    <numIndex index="0">Map</numIndex>
+                    <numIndex index="1">Place->map</numIndex>
+                  </numIndex>
+                </items>
+              </config>
+              <onChange>reload</onChange>
+            </TCEforms>
+          </switchableControllerActions>
+          <settings.appearance.type>
+            <TCEforms>
+              <exclude>1</exclude>
+              <label>LLL:EXT:poi_map/Resources/Private/Language/locallang_ff.xlf:appearance.type</label>
+              <config>
+                <type>select</type>
+                <items type="array">
+                  <numIndex index="0" type="array">
+                    <numIndex index="0">default</numIndex>
+                    <numIndex index="1"></numIndex>
+                  </numIndex>
+                  <numIndex index="1" type="array">
+                    <numIndex index="0">ROADMAP</numIndex>
+                    <numIndex index="1">roadmap</numIndex>
+                  </numIndex>
+                  <numIndex index="2" type="array">
+                    <numIndex index="0">SATELLITE</numIndex>
+                    <numIndex index="1">satellite</numIndex>
+                  </numIndex>
+                  <numIndex index="3" type="array">
+                    <numIndex index="0">HYBRID</numIndex>
+                    <numIndex index="1">hybrid</numIndex>
+                  </numIndex>
+                  <numIndex index="4" type="array">
+                    <numIndex index="0">TERRAIN</numIndex>
+                    <numIndex index="1">terrain</numIndex>
+                  </numIndex>
+                </items>
+              </config>
+            </TCEforms>
+          </settings.appearance.type>
+          <settings.appearance.center>
+            <TCEforms>
+              <exclude>1</exclude>
+              <label>LLL:EXT:poi_map/Resources/Private/Language/locallang_ff.xlf:appearance.center</label>
+              <config>
+                <type>input</type>
+                <size>100</size>
+                <max>50</max>
+                <fieldWizard>
+                  <mapsPositionPicker>
+                    <renderType>mapsPositionPicker</renderType>
+                  </mapsPositionPicker>
+                </fieldWizard>
+              </config>
+              <displayCond>FIELD:switchableControllerActions:=:Place->map</displayCond>
+            </TCEforms>
+          </settings.appearance.center>
+          <settings.appearance.zoom>
+            <TCEforms>
+              <exclude>1</exclude>
+              <label>LLL:EXT:poi_map/Resources/Private/Language/locallang_ff.xlf:appearance.zoom</label>
+              <config>
+                <type>input</type>
+                <size>10</size>
+                <eval>int,trim</eval>
+                <range>
+                  <lower>0</lower>
+                  <upper>18</upper>
+                </range>
+                <default>9</default>
+                <slider>
+                  <step>1</step>
+                  <width>200</width>
+                </slider>
+              </config>
+              <displayCond>FIELD:switchableControllerActions:=:Place->map</displayCond>
+            </TCEforms>
+          </settings.appearance.zoom>
+          <settings.appearance.style>
+            <TCEforms>
+              <exclude>1</exclude>
+              <label>LLL:EXT:poi_map/Resources/Private/Language/locallang_ff.xlf:appearance.style</label>
+              <config>
+                <type>text</type>
+                <cols>40</cols>
+                <rows>10</rows>
+              </config>
+            </TCEforms>
+          </settings.appearance.style>
+        </el>
+      </ROOT>
+    </sDEF>
+    <sINFO_WIDOWS>
+      <ROOT>
+        <TCEforms>
+          <sheetTitle>LLL:EXT:poi_map/Resources/Private/Language/locallang_ff.xlf:infoWindows</sheetTitle>
+          <displayCond>FIELD:sDEF.switchableControllerActions:=:Place->map</displayCond>
+        </TCEforms>
+        <type>array</type>
+        <el>
+          <settings.appearance.showInfo>
+            <TCEforms>
+              <exclude>1</exclude>
+              <label>LLL:EXT:poi_map/Resources/Private/Language/locallang_ff.xlf:appearance.showInfo</label>
+              <config>
+                <type>check</type>
+                <default>1</default>
+              </config>
+            </TCEforms>
+          </settings.appearance.showInfo>
+          <settings.appearance.showInfoSingle>
+            <TCEforms>
+              <exclude>1</exclude>
+              <label>LLL:EXT:poi_map/Resources/Private/Language/locallang_ff.xlf:appearance.showInfoSingle</label>
+              <config>
+                <type>check</type>
+                <default>1</default>
+              </config>
+            </TCEforms>
+          </settings.appearance.showInfoSingle>
+          <settings.appearance.infoOptions>
+            <TCEforms>
+              <exclude>1</exclude>
+              <label>LLL:EXT:poi_map/Resources/Private/Language/locallang_ff.xlf:appearance.infoOptions</label>
+              <config>
+                <type>text</type>
+                <cols>40</cols>
+                <rows>10</rows>
+              </config>
+            </TCEforms>
+          </settings.appearance.infoOptions>
+        </el>
+      </ROOT>
+    </sINFO_WIDOWS>
+    <sFILTERS>
+      <ROOT>
+        <TCEforms>
+          <sheetTitle>LLL:EXT:poi_map/Resources/Private/Language/locallang_ff.xlf:filters</sheetTitle>
+        </TCEforms>
+        <type>array</type>
+        <el>
+          <settings.filters.categories>
+            <TCEforms>
+              <exclude>1</exclude>
+              <label>LLL:EXT:poi_map/Resources/Private/Language/locallang_ff.xlf:filters.categories</label>
+              <config>
+                <type>select</type>
+                <autoSizeMax>10</autoSizeMax>
+                <foreign_table>sys_category</foreign_table>
+                <foreign_table_where> AND sys_category.sys_language_uid IN (-1, 0) ORDER BY sys_category.sorting ASC</foreign_table_where>
+                <maxitems>9999</maxitems>
+                <renderMode>tree</renderMode>
+                <size>10</size>
+                <treeConfig>
+                  <appearance>
+                    <expandAll>1</expandAll>
+                    <showHeader>1</showHeader>
+                  </appearance>
+                  <parentField>parent</parentField>
+                </treeConfig>
+              </config>
+            </TCEforms>
+          </settings.filters.categories>
+          <settings.filters.subcategories>
+            <TCEforms>
+              <exclude>1</exclude>
+              <label>LLL:EXT:poi_map/Resources/Private/Language/locallang_ff.xlf:filters.subcategories</label>
+              <config>
+                <type>check</type>
+              </config>
+            </TCEforms>
+          </settings.filters.subcategories>
+          <settings.filters.pages>
+            <TCEforms>
+              <exclude>1</exclude>
+              <label>LLL:EXT:poi_map/Resources/Private/Language/locallang_ff.xlf:filters.pages</label>
+              <config>
+                <type>select</type>
+                <autoSizeMax>10</autoSizeMax>
+                <foreign_table>pages</foreign_table>
+                <foreign_table_where> ORDER BY pages.sorting ASC</foreign_table_where>
+                <maxitems>9999</maxitems>
+                <renderMode>tree</renderMode>
+                <size>10</size>
+                <treeConfig>
+                  <appearance>
+                    <expandAll>1</expandAll>
+                    <showHeader>1</showHeader>
+                  </appearance>
+                  <parentField>pid</parentField>
+                </treeConfig>
+              </config>
+            </TCEforms>
+          </settings.filters.pages>
+          <settings.filters.subpages>
+            <TCEforms>
+              <exclude>1</exclude>
+              <label>LLL:EXT:poi_map/Resources/Private/Language/locallang_ff.xlf:filters.subpages</label>
+              <config>
+                <type>check</type>
+              </config>
+            </TCEforms>
+          </settings.filters.subpages>
+        </el>
+      </ROOT>
+    </sFILTERS>
+  </sheets>
 </T3DataStructure>
