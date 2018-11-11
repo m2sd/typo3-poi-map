@@ -1,47 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2018-09-27T09:04:32Z" product-name="poi_map">
-		<header/>
-		<body>
-			<trans-unit id="appearance">
-				<source>Appearance</source>
-			</trans-unit>
-			<trans-unit id="appearance.layout">
-				<source>Layout:</source>
-			</trans-unit>
-			<trans-unit id="appearance.style">
-				<source>Map style:</source>
-			</trans-unit>
-			<trans-unit id="appearance.type">
-				<source>Map type:</source>
-			</trans-unit>
-			<trans-unit id="appearance.showInfo">
-				<source>Display info windows:</source>
-			</trans-unit>
-			<trans-unit id="appearance.showInfoSingle">
-				<source>Display only one info window at a time:</source>
-			</trans-unit>
-			<trans-unit id="appearance.center">
-				<source>Map center: (if not set the average between markers is calculated or falls back to default)</source>
-			</trans-unit>
-			<trans-unit id="appearance.zoom">
-				<source>Map zoom:</source>
-			</trans-unit>
-			<trans-unit id="filters">
-				<source>Filters</source>
-			</trans-unit>
-			<trans-unit id="filters.categories">
-				<source>By category:</source>
-			</trans-unit>
-			<trans-unit id="filters.subcategories">
-				<source>Include subcategories:</source>
-			</trans-unit>
-			<trans-unit id="filters.pages">
-				<source>By page:</source>
-			</trans-unit>
-			<trans-unit id="filters.subpages">
-				<source>Include subpages:</source>
-			</trans-unit>
-		</body>
-	</file>
+  <file source-language="en" datatype="plaintext" original="messages" date="2018-09-27T09:04:32Z" product-name="poi_map">
+    <header/>
+    <body>
+      <trans-unit id="appearance">
+        <source>Appearance</source>
+      </trans-unit>
+      <trans-unit id="appearance.layout">
+        <source>Layout:</source>
+      </trans-unit>
+      <trans-unit id="appearance.style">
+        <source>Map style:</source>
+      </trans-unit>
+      <trans-unit id="appearance.type">
+        <source>Map type:</source>
+      </trans-unit>
+      <trans-unit id="appearance.showInfo">
+        <source>Display info windows:</source>
+      </trans-unit>
+      <trans-unit id="appearance.showInfoSingle">
+        <source>Display only one info window at a time:</source>
+      </trans-unit>
+      <trans-unit id="appearance.infoOptions">
+        <source>SnazzyInfoWindow options:</source>
+      </trans-unit>
+      <trans-unit id="appearance.center">
+        <source>Map center: (if not set the average between markers is calculated or falls back to default)</source>
+      </trans-unit>
+      <trans-unit id="appearance.zoom">
+        <source>Map zoom:</source>
+      </trans-unit>
+      <trans-unit id="infoWindows">
+        <source>Info windows</source>
+      </trans-unit>
+      <trans-unit id="filters">
+        <source>Filters</source>
+      </trans-unit>
+      <trans-unit id="filters.categories">
+        <source>By category:</source>
+      </trans-unit>
+      <trans-unit id="filters.subcategories">
+        <source>Include subcategories:</source>
+      </trans-unit>
+      <trans-unit id="filters.pages">
+        <source>By page:</source>
+      </trans-unit>
+      <trans-unit id="filters.subpages">
+        <source>Include subpages:</source>
+      </trans-unit>
+    </body>
+  </file>
 </xliff>

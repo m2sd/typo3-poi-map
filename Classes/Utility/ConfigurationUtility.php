@@ -185,23 +185,32 @@ class ConfigurationUtility implements SingletonInterface
     {
         if (TYPO3_MODE === 'FE' && count($this->maps)) {
             $assets['jsLibs'][] = [
-                'file' => 'EXT:poi_map/Resources/Public/JavaScript/GoogleMapsLoader.js',
+                'file' => 'EXT:poi_map/Resources/Public/JavaScript/PoiMapInit.min.js',
                 'section' => PageRenderer::PART_FOOTER,
-                'type' => 'text/javascript'
+                'type' => 'text/javascript',
+                'async' => true
             ];
 
-            $id = '';
-            $code = "var c=[];GoogleMapsLoader.KEY='{$this->maps_apiKey}';";
+            $signature = '';
+            $code = "var c=[];";
             /** @var Map $map */
             foreach ($this->maps as $map) {
-                $id .= $map->getId().';';
-                $code .= "c.push(function(){{$map->getJavaScript()}});";
+                $signature .= $map->getId().';';
+                $code .= "c.push(function(){{$map->getJavaScript()}return {$map->getId()};});";
             }
 
-            $code .= "GoogleMapsLoader.load(function(){c.forEach(function(f){f();});});";
+            $init = 'w.M2S.instances=(w.M2S.instances||[]);';
+            $init .= 'w.M2S.instances.push(new w.M2S.PoiMap({';
+            $init .=    "apiKey:'{$this->maps_apiKey}',";
+            /** @todo: uncomment on next major version */
+            //$init .=    "excludeCss:{$this->maps_excludeCss},";
+            $init .=    'callbacks:c';
+            $init .= '}));';
 
-            $code = "'use strict';(function() {{$code}})();";
-            $assets['jsInline'][$id] = [
+            $code .= "d.addEventListener('m2s:poi-map-loaded',function() {{$init}});";
+            $code = "'use strict';(function(w,d) {{$code}})(window,document);";
+
+            $assets['jsInline'][$signature] = [
                 'code' => GeneralUtility::minifyJavaScript($code),
                 'section' => PageRenderer::PART_FOOTER
             ];
