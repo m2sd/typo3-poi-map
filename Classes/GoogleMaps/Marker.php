@@ -33,7 +33,7 @@ class Marker extends AbstractElement
     }
 
     /**
-     * @TODO: remove once proper coordinate handling is implemented
+     * @todo: remove once proper coordinate handling is implemented
      *
      * Set the position from a coordinates string
      *

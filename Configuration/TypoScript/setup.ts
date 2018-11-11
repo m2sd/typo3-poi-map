@@ -30,6 +30,7 @@ plugin.tx_poimap_places {
 
     settings {
         default_style = {$plugin.tx_poimap_places.settings.default_style}
+        default_info_options = {$plugin.tx_poimap_places.settings.default_info_options}
         default_type = {$plugin.tx_poimap_places.settings.default_type}
     }
 }

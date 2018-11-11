@@ -7,13 +7,13 @@
  */
 namespace M2S\PoiMap\ViewHelpers;
 
-use M2S\PoiMap\Domain\Model\Place;
 use M2S\PoiMap\GoogleMaps\Map;
 use M2S\PoiMap\GoogleMaps\Marker;
+use M2S\PoiMap\Domain\Model\Place;
 use M2S\PoiMap\Utility\ConfigurationUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 
 class MapViewHelper extends AbstractViewHelper
 {
@@ -84,6 +84,7 @@ class MapViewHelper extends AbstractViewHelper
             'string',
             'The center of the map'
         );
+        /** @todo: rename options for info windows on next major release */
         $this->registerArgument(
             'enableInfo',
             'bool',
@@ -97,6 +98,13 @@ class MapViewHelper extends AbstractViewHelper
             'Set to false to allow multiple info windows to be displayed at the same time.',
             false,
             true
+        );
+        $this->registerArgument(
+            'infoOptions',
+            'array',
+            'Additional configuration for SnazzyInfoWindow instances',
+            false,
+            []
         );
         $this->registerArgument(
             'markerIcon',
@@ -173,8 +181,10 @@ class MapViewHelper extends AbstractViewHelper
         $templateVariableContainer = $renderingContext->getVariableProvider();
         /** @var ConfigurationUtility $configuration */
         $configuration = GeneralUtility::makeInstance(ConfigurationUtility::class);
+
         $map = new Map();
-        $map->enableInfoWindows($arguments['enableInfo'], $arguments['enableInfoSingle']);
+        /** @todo: extract into separate entity */
+        $map->enableInfoWindows($arguments['enableInfo'], $arguments['enableInfoSingle'], $arguments['infoOptions']);
         /** @var Place $place */
         foreach ($arguments['places'] as $place) {
             if (count($position = $place->getLatLngArray())) {
@@ -192,6 +202,7 @@ class MapViewHelper extends AbstractViewHelper
                 if (GeneralUtility::validPathStr($arguments['markerIcon'])) {
                     $marker->setOption('icon', $arguments['markerIcon']);
                 }
+
                 $map->addMarker($marker);
             }
         }
@@ -215,17 +226,15 @@ class MapViewHelper extends AbstractViewHelper
 
         $configuration->addMap($map);
 
-        $tag = '<div id="' . $map->getId() . '"';
+        $tag = "<div id=\"{$map->getId()}\"";
         $attributeKeys = array_intersect(array_keys($arguments), self::$tagAttributes);
         foreach ($attributeKeys as $attributeKey) {
-            if ($arguments[$attributeKey]) {
-                $tag .= ' ' . $attributeKey . '="' . $arguments[$attributeKey] . '"';
-            }
+            $tag .= " $attributeKey=\"{$arguments[$attributeKey]}\"";
         }
         if ($arguments['additionalAttributes']) {
             foreach ($arguments['additionalAttributes'] as $attributeKey => $attributeValue) {
                 if (!in_array($attributeKey, self::$tagAttributes)) {
-                    $tag .= ' ' . $attributeKey . '="' . $attributeValue . '"';
+                    $tag .= " $attributeKey=\"{$attributeValue}\"";
                 }
             }
         }

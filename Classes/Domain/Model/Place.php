@@ -170,17 +170,17 @@ class Place extends AbstractEntity
     /**
      * @return null|\TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
-    public function getImage()
+    public function getImage(): ?FileReference
     {
         return $this->image;
     }
 
     /**
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
+     * @param null|\TYPO3\CMS\Extbase\Domain\Model\FileReference $image
      *
      * @return self
      */
-    public function setImage(FileReference $image): self
+    public function setImage(?FileReference $image): self
     {
         $this->image = $image;
 

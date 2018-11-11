@@ -295,7 +295,7 @@ return [
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('image', [
                 'maxitems' => 1,
                 'appearance' => [
-                    'createNewRecordLinkTitle' => $langFile.':tx_poimap_domain_model_place.image.create_record'
+                    'createNewRelationLinkTitle' => $langFile.':tx_poimap_domain_model_place.image.create_record'
                 ],
                 'overrideChildTca' => [
                     'types' => [

@@ -12,15 +12,9 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 class Map extends AbstractElement
 {
     /**
-     * Determines whether all other info windows should be closed if one is opened
-     *
-     * @var bool
-     */
-    protected $singleWindow = false;
-    /**
      * Markers to be displayed on the map
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\M2S\PoiMap\Domain\Model\Place>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\M2S\PoiMap\GoogleMaps\Marker>
      */
     protected $markers;
     /**
@@ -29,6 +23,18 @@ class Map extends AbstractElement
      * @var bool
      */
     protected $infoWindows = false;
+    /**
+     * Determines whether all other info windows should be closed if one is opened
+     *
+     * @var bool
+     */
+    protected $infoWindowsSingle = false;
+    /**
+     * Additional configuration options for SnazzyInfoWindow instances
+     *
+     * @var array
+     */
+    protected $infoWindowsOptions = [];
 
     /**
      * Map constructor.
@@ -101,10 +107,11 @@ class Map extends AbstractElement
      *
      * @return Map
      */
-    public function enableInfoWindows(bool $enable = true, bool $single = false): self
+    public function enableInfoWindows(bool $enable = true, bool $single = false, array $options = []): self
     {
         $this->infoWindows = $enable;
-        $this->singleWindow = $single;
+        $this->infoWindowsSingle = $single;
+        $this->infoWindowsOptions = $options;
 
         return $this;
     }
@@ -128,13 +135,12 @@ class Map extends AbstractElement
                 $markerJs .= "$id.setMap({$this->id});";
 
                 if ($this->infoWindows && $info = $marker->getInfoWindow()) {
-                    $markerJs .= "$id.addListener('click',function(){";
-                    $markerJs .= "if(!this.__iw){this.__iw = new google.maps.InfoWindow({content: '$info'});}";
-                    $markerJs .= 'if(!this.__iw.getMap()){this.__iw.open(this.getMap(), this);}else{this.__iw.close();}';
-                    if ($this->singleWindow) {
-                        $markerJs .= 'if(this.__iw.getMap()){var s=this;this.__iw.getMap().__mrk.forEach(function(m){if(m !== s && m.__iw){m.__iw.close();}});}';
-                    }
-                    $markerJs .= '});';
+                    $windowOptions = count($this->infoWindowsOptions) ? json_encode($this->infoWindowsOptions) : '{}';
+                    $markerJs .= "$id.__iw=new SnazzyInfoWindow(Object.assign($windowOptions, {";
+                    $markerJs .=    "marker:$id,";
+                    $markerJs .=    "content:'$info',";
+                    $markerJs .=    "closeWhenOthersOpen:{$this->infoWindowsSingle},";
+                    $markerJs .= '}));';
                 }
                 $markerJs .= "{$this->id}.__mrk.push($id);";
 

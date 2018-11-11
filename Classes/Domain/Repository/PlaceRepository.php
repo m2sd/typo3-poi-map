@@ -38,7 +38,7 @@ class PlaceRepository extends Repository
     }
 
     /**
-     * @TODO: make consistent with typoscript overlay behaviour (will be fixed in 9-lts, in the meantime find a way to circumvent)
+     * @todo: make consistent with typoscript overlay behaviour (will be fixed in 9-lts, in the meantime find a way to circumvent)
      *
      * @param array $pids
      *
