@@ -1,6 +1,6 @@
 # cat=basic/enable/a1; type=string; label=GoogleMaps API key:If not set the maps implementations will be rendered in development mode.
 maps.api_key =
-# cat=basic/typo/a1; type=options[ROADMAP=roadmap,SATELLITE=satellite,HYBRID=hybrid,TERRAIN=terrain]; label=GoogleMaps type:The display type for the google maps
+# cat=basic/typo/a1; type=options[ROADMAP=roadmap,SATELLITE=satellite,HYBRID=hybrid,TERRAIN=terrain]; label=GoogleMaps type:The default display type for google maps rendered by plugins
 maps.default_type = roadmap
 # cat=basic/color/a1; type=string; label=GoogleMaps style:A json string that defines how the google map is rendered, only works if api key is set (empty = default)
 maps.default_style =
@@ -9,8 +9,6 @@ maps.default_style =
 wizard.api_key =
 # cat=advanced/enable/a2; type=boolean; label=Use frontend API key for backend wizard:If set the API key defined for the frontend implementation is used for the backend
 wizard.use_frontend_api = 0
-# cat=advanced/enable/a3; type=boolean; label=Enable strict ConfigurationUtility:If set to true the ConfigurationUtility will throw an error if an attempt is made to retrieve a unregistered property
-strict = 1
 
 # cat=advanced/typo/a1; type=string; label=Default configuration for maps:The 'styles' option is overwritten by the 'maps.default_style' setting if anything other than '' (empty)
 maps.default_options =
@@ -20,5 +18,7 @@ maps.exclude_css =
 */
 # cat=advanced/dims/a1; type=string; label=Default center for mapsPositionPicker map:Default = 0.0,0.0
 wizard.center = 0.0,0.0
-# cat=advanced/dims/a2; type=string; label=Default zoom for mapsPositionPicker map:Default = 1
+# cat=advanced/dims/a2; type=int+; label=Default zoom for mapsPositionPicker map:Default = 1
 wizard.zoom = 1
+
+strict = 1

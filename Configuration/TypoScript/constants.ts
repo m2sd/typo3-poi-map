@@ -8,8 +8,8 @@ plugin.tx_poimap_places {
     layoutRootPath =
     }
   persistence {
-    # cat=poi_map/links/a1; type=int; label=Default storage PID
-    storagePid =
+    # cat=poi_map/links/a1; type=int+; label=Default storage PID
+    storagePid = 0
     }
   settings {
     # cat=poi_map/typo/a1; type=options[inherit=,ROADMAP=roadmap,SATELLITE=satellite,HYBRID=hybrid,TERRAIN=terrain]; label=GoogleMaps type:The display type for the google map(inherit = use extension settings)
