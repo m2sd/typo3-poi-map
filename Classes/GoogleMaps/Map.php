@@ -26,9 +26,9 @@ class Map extends AbstractElement
     /**
      * Determines whether all other info windows should be closed if one is opened
      *
-     * @var bool
+     * @var string
      */
-    protected $infoWindowsSingle = false;
+    protected $infoWindowsSingle = 'false';
     /**
      * Additional configuration options for SnazzyInfoWindow instances
      *
@@ -110,7 +110,7 @@ class Map extends AbstractElement
     public function enableInfoWindows(bool $enable = true, bool $single = false, array $options = []): self
     {
         $this->infoWindows = $enable;
-        $this->infoWindowsSingle = $single;
+        $this->infoWindowsSingle = $single ? 'true' : 'false';
         $this->infoWindowsOptions = $options;
 
         return $this;
@@ -139,7 +139,7 @@ class Map extends AbstractElement
                     $markerJs .= "$id.__iw=new SnazzyInfoWindow(Object.assign($windowOptions, {";
                     $markerJs .=    "marker:$id,";
                     $markerJs .=    "content:'$info',";
-                    $markerJs .=    "closeWhenOthersOpen:{$this->infoWindowsSingle},";
+                    $markerJs .=    "closeWhenOthersOpen:{$this->infoWindowsSingle}";
                     $markerJs .= '}));';
                 }
                 $markerJs .= "{$this->id}.__mrk.push($id);";

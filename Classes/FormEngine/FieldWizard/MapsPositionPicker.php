@@ -6,6 +6,7 @@ namespace M2S\PoiMap\FormEngine\FieldWizard;
 use M2S\PoiMap\Utility\ConfigurationUtility;
 use TYPO3\CMS\Backend\Form\AbstractNode;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Lang\LanguageService;
 
 class MapsPositionPicker extends AbstractNode
@@ -18,7 +19,9 @@ class MapsPositionPicker extends AbstractNode
     public function render(): array
     {
         $result = $this->initializeResultArray();
-        $configuration = GeneralUtility::makeInstance(ConfigurationUtility::class);
+        /** @var ObjectManager $objectManager */
+        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+        $configuration = $objectManager->get(ConfigurationUtility::class);
         $apiKey = $configuration->wizard_useFrontendApi
             ? $configuration->maps_apiKey
             : $configuration->wizard_apiKey;

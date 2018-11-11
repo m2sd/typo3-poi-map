@@ -2,14 +2,15 @@
 
 namespace M2S\PoiMap\Controller;
 
-use M2S\PoiMap\Domain\Repository\PlaceRepository;
 use M2S\PoiMap\Domain\Repository\CategoryRepository;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use M2S\PoiMap\Domain\Repository\PlaceRepository;
 use TYPO3\CMS\Core\Database\QueryGenerator;
-use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\CMS\Core\Utility\ArrayUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
 class PlaceController extends ActionController
 {
@@ -99,10 +100,13 @@ class PlaceController extends ActionController
      */
     protected function getInfoOptions(): ?array
     {
-        if (!$style = $this->settings['appearance']['infoOptions']) {
-            $style = $this->settings['default_info_options'];
-        }
-        return json_decode($style, true);
+        $style = json_decode($this->settings['default_info_options'], true) ?: [];
+        ArrayUtility::mergeRecursiveWithOverrule(
+            $style,
+            json_decode($this->settings['appearance']['infoOptions'], true) ?: []
+        );
+
+        return $style;
     }
 
     /**
