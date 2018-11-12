@@ -199,15 +199,17 @@ class ConfigurationUtility implements SingletonInterface
                 $code .= "c.push(function(){{$map->getJavaScript()}return {$map->getId()};});";
             }
 
-            $init = 'w.M2S.instances=(w.M2S.instances||[]);';
-            $init .= 'w.M2S.instances.push(new w.M2S.PoiMap({';
-            $init .=    "apiKey:'{$this->maps_apiKey}',";
+            $code .= 'var i=function() {';
+            $code .=    'w.M2S.instances=(w.M2S.instances||[]);';
+            $code .=    'w.M2S.instances.push(new w.M2S.PoiMap({';
+            $code .=        "apiKey:'{$this->maps_apiKey}',";
             /** @todo: uncomment on next major version */
-            //$init .=    "excludeCss:{$this->maps_excludeCss},";
-            $init .=    'callbacks:c';
-            $init .= '}));';
+            //$code .=      "excludeCss:{$this->maps_excludeCss},";
+            $code .=        'callbacks:c';
+            $code .=    '}));';
+            $code .= '};';
 
-            $code .= "d.addEventListener('m2s:poi-map-loaded',function() {{$init}});";
+            $code .= "(w.M2S && w.M2S.PoiMap && i())||d.addEventListener('m2s:poi-map-loaded',i);";
             $code = "'use strict';(function(w,d) {{$code}})(window,document);";
 
             $assets['jsInline'][$signature] = [
