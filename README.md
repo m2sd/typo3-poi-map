@@ -105,19 +105,19 @@ The map view helper can be used to render a google map.
 
 ### Maps specific attributes
 
-| Property         | Type      | Description                                                     | Default               |
-| ---------------- | --------- | --------------------------------------------------------------- | --------------------- |
-| places           | `array`   | A set of places to be placed on the map as markers              | `[]`                  |
-| as               | `string`  | The name for the iteration variable in the info window template | `'place'`             |
-| options          | `array`   | Configuration array for the map itself                          | `default_options`     |
-| mapStyles        | `array`   | Configuration array for the styles option of the map            | `default_style`       |
-| type             | `string`  | The type of map that should be displayed                        | `default_type`        |
-| zoom             | `integer` | The zoom of the map (between `1` and `18`)                      | `1`                   |
-| center           | `string`  | The center of the map (comma separated geo coordinates)         | `'0.0,0.0'`           |
-| enableInfo       | `boolean` | Enables/disables on click info windows                          | `true`                |
-| enableInfoSingle | `boolean` | Enables/disables multiple open info windows                     | `true`                |
-| infoOptions      | `array`   | Additional configuration for SnazzyInfoWindow instances         | `[]`                  |
-| markerIcon       | `string`  | Sets a custom marker icon for all markers on this map           | `default_marker_icon` |
+| Property         | Type      | Description                                                     | Default                |
+| ---------------- | --------- | --------------------------------------------------------------- | ---------------------- |
+| places           | `array`   | A set of places to be placed on the map as markers              | `[]`                   |
+| as               | `string`  | The name for the iteration variable in the info window template | `'place'`              |
+| options          | `array`   | Configuration array for the map itself                          | `default_options`      |
+| mapStyles        | `array`   | Configuration array for the styles option of the map            | `default_style`        |
+| type             | `string`  | The type of map that should be displayed                        | `default_type`         |
+| zoom             | `integer` | The zoom of the map (between `1` and `18`)                      | `1`                    |
+| center           | `string`  | The center of the map (comma separated geo coordinates)         | `'0.0,0.0'`            |
+| enableInfo       | `boolean` | Enables/disables on click info windows                          | `true`                 |
+| enableInfoSingle | `boolean` | Enables/disables multiple open info windows                     | `true`                 |
+| infoOptions      | `array`   | Additional configuration for SnazzyInfoWindow instances         | `default_info_options` |
+| markerIcon       | `string`  | Sets a custom marker icon for all markers on this map           | `default_marker_icon`  |
 
 ### Default tag attributes
 

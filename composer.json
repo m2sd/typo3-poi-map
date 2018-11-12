@@ -2,7 +2,7 @@
   "name": "m2s/typo3-poi-map",
   "type": "typo3-cms-extension",
   "description": "Categorized points of interest with GoogleMaps integration",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "keywords": [
     "typo3",
     "google maps",
