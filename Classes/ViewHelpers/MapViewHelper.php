@@ -12,6 +12,7 @@ use M2S\PoiMap\GoogleMaps\Marker;
 use M2S\PoiMap\Domain\Model\Place;
 use M2S\PoiMap\Utility\ConfigurationUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Service\ImageService;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 
@@ -199,7 +200,11 @@ class MapViewHelper extends AbstractViewHelper
                     }
                     $templateVariableContainer->remove($arguments['as']);
                 }
-                if (GeneralUtility::validPathStr($arguments['markerIcon'])) {
+
+                if ($customIcon = $place->getMarkerIcon()) {
+                    $customIcon = GeneralUtility::makeInstance(ImageService::class)->getImageUri($customIcon->getOriginalResource());
+                    $marker->setOption('icon', $customIcon);
+                } elseif (GeneralUtility::validPathStr($arguments['markerIcon'])) {
                     $marker->setOption('icon', $arguments['markerIcon']);
                 }
 

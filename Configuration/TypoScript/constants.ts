@@ -14,6 +14,8 @@ plugin.tx_poimap_places {
   settings {
     # cat=poi_map/typo/a1; type=options[inherit=,ROADMAP=roadmap,SATELLITE=satellite,HYBRID=hybrid,TERRAIN=terrain]; label=GoogleMaps type:The display type for the google map(inherit = use extension settings)
     default_type =
+    # cat=poi_map/typo/a2; type=string; label=Default marker icon:An absolute or relative URL to specify a default custom marker
+    default_marker_icon =
     # cat=poi_map/typo/a3; type=string; label=SnazzyInfoWindow options:A json string that specifies custom options for the info windows
     default_info_options =
     # cat=poi_map/color/a1; type=string; label=GoogleMaps styles:A json string that defines how the google map is rendered, only works if api key is set(empty = use extension settings)

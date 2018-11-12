@@ -95,6 +95,73 @@
               <displayCond>FIELD:switchableControllerActions:=:Place->map</displayCond>
             </TCEforms>
           </settings.appearance.zoom>
+          <settings.appearance.markerIcon>
+            <TCEforms>
+              <exclude>1</exclude>
+              <label>LLL:EXT:poi_map/Resources/Private/Language/locallang_ff.xlf:appearance.markerIcon</label>
+              <config>
+                <type>inline</type>
+                <maxitems>1</maxitems>
+                <foreign_table>sys_file_reference</foreign_table>
+                <foreign_sortby>sorting_foreign</foreign_sortby>
+                <foreign_table_field>tablenames</foreign_table_field>
+                <foreign_match_fields type="array">
+                  <fieldname>marker_icon</fieldname>
+                </foreign_match_fields>
+                <foreign_label>uid_local</foreign_label>
+                <foreign_selector>uid_local</foreign_selector>
+                <overrideChildTca type="array">
+                  <columns type="array">
+                    <uid_local type="array">
+                      <config type="array">
+                        <appearance type="array">
+                          <elementBrowserType>file</elementBrowserType>
+                          <elementBrowserAllowed>gif,jpg,jpeg,tif,tiff,bmp,png,svg</elementBrowserAllowed>
+                        </appearance>
+                      </config>
+                    </uid_local>
+                  </columns>
+                  <types type="array">
+                    <numIndex index="0" type="array">
+                      <showItem>--palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,--palette--;;filePalette</showItem>
+                    </numIndex>
+                    <numIndex index="2" type="array">
+                      <showItem>--palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,--palette--;;filePalette</showItem>
+                    </numIndex>
+                  </types>
+                </overrideChildTca>
+                <filter type="array">
+                  <numIndex index="0" type="array">
+                    <userFunc>TYPO3\CMS\Core\Resource\Filter\FileExtensionFilter->filterInlineChildren</userFunc>
+                    <parameters type="array">
+                      <allowedFileExtensions>gif,jpg,jpeg,tif,tiff,bmp,png,svg</allowedFileExtensions>
+                      <disallowedFileExtensions />
+                    </parameters>
+                  </numIndex>
+                </filter>
+                <appearance type="array">
+                  <createNewRelationLinkTitle>LLL:EXT:poi_map/Resources/Private/Language/locallang_tca.xlf:tx_poimap_domain_model_place.marker_icon.create_record</createNewRelationLinkTitle>
+                  <useSortable>1</useSortable>
+                  <headerThumbnail type="array">
+                    <field>uid_local</field>
+                    <height>45</height>
+                    <width>45c</width>
+                  </headerThumbnail>
+                  <enableControls type="array">
+                    <info>1</info>
+                    <new>0</new>
+                    <dragdrop>1</dragdrop>
+                    <sort>0</sort>
+                    <hide>1</hide>
+                    <delete>1</delete>
+                  </enableControls>
+                </appearance>
+                <behaviour type="array">
+                  <localizeChildrenAtParentLocalization>1</localizeChildrenAtParentLocalization>
+                </behaviour>
+              </config>
+            </TCEforms>
+          </settings.appearance.markerIcon>
           <settings.appearance.style>
             <TCEforms>
               <exclude>1</exclude>

@@ -39,6 +39,10 @@ class Place extends AbstractEntity
      */
     protected $image = null;
     /**
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    protected $markerIcon = null;
+    /**
      * @var string
      */
     protected $url = '';
@@ -183,6 +187,26 @@ class Place extends AbstractEntity
     public function setImage(?FileReference $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return  null|\TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    public function getMarkerIcon(): ?FileReference
+    {
+        return $this->markerIcon;
+    }
+
+    /**
+     * @param  null|\TYPO3\CMS\Extbase\Domain\Model\FileReference  $markerIcon
+     *
+     * @return  self
+     */
+    public function setMarkerIcon(?FileReference $markerIcon)
+    {
+        $this->markerIcon = $markerIcon;
 
         return $this;
     }

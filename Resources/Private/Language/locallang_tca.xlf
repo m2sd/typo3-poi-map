@@ -75,6 +75,12 @@
       <trans-unit id="tx_poimap_domain_model_place.image.create_record">
         <source>Choose image</source>
       </trans-unit>
+      <trans-unit id="tx_poimap_domain_model_place.marker_icon">
+        <source>Marker icon:</source>
+      </trans-unit>
+      <trans-unit id="tx_poimap_domain_model_place.marker_icon.create_record">
+        <source>Set custom icon</source>
+      </trans-unit>
       <trans-unit id="tx_poimap_domain_model_place.geo_coordinates">
         <source>Coordinates:</source>
       </trans-unit>
