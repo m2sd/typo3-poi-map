@@ -92,7 +92,6 @@
                   <width>200</width>
                 </slider>
               </config>
-              <displayCond>FIELD:switchableControllerActions:=:Place->map</displayCond>
             </TCEforms>
           </settings.appearance.zoom>
           <settings.appearance.markerIcon>

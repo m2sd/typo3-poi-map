@@ -57,7 +57,8 @@ class PlaceController extends ActionController
             'places' => $places,
             'mapStyles' => $this->getMapStyles(),
             'mapType' => ($this->settings['appearance']['type'] ?: $this->settings['default_type']),
-            'markerIcon' => $this->getMarkerIcon()
+            'markerIcon' => $this->getMarkerIcon(),
+            'zoom' => $this->settings['appearance']['zoom']
         ]);
     }
 
