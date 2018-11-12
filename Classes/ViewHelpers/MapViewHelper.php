@@ -7,14 +7,14 @@
  */
 namespace M2S\PoiMap\ViewHelpers;
 
+use M2S\PoiMap\Domain\Model\Place;
 use M2S\PoiMap\GoogleMaps\Map;
 use M2S\PoiMap\GoogleMaps\Marker;
-use M2S\PoiMap\Domain\Model\Place;
 use M2S\PoiMap\Utility\ConfigurationUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Service\ImageService;
-use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 class MapViewHelper extends AbstractViewHelper
 {
@@ -56,7 +56,7 @@ class MapViewHelper extends AbstractViewHelper
         $this->registerArgument(
             'as',
             'string',
-            'An alternative of the iteration variable in the info window template',
+            'The name for the iteration variable in the info window template',
             false,
             'place'
         );
