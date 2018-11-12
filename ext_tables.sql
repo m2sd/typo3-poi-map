@@ -14,6 +14,8 @@ CREATE TABLE tx_poimap_domain_model_place (
   url                        VARCHAR(1024) DEFAULT ''                   NOT NULL,
   geo_coordinates            VARCHAR(50) DEFAULT ''                     NOT NULL,
 
+  marker_icon                INT(11) DEFAULT '0'                        NOT NULL,
+
   tstamp                     INT(11) UNSIGNED DEFAULT '0'               NOT NULL,
   crdate                     INT(11) UNSIGNED DEFAULT '0'               NOT NULL,
   cruser_id                  INT(11) UNSIGNED DEFAULT '0'               NOT NULL,

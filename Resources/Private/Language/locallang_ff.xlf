@@ -30,6 +30,9 @@
       <trans-unit id="appearance.zoom">
         <source>Map zoom:</source>
       </trans-unit>
+      <trans-unit id="appearance.markerIcon">
+        <source>Custom marker icon:</source>
+      </trans-unit>
       <trans-unit id="infoWindows">
         <source>Info windows</source>
       </trans-unit>

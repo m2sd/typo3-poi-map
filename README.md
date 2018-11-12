@@ -80,6 +80,7 @@ These settings provide defaults for all maps rendered by the plugin.
 | Setting              | Type        | Description                                                                                                                                                                                                                                                        | Default   |
 | -------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- |
 | default_type         | `select`    | **[`mapTypeId`](https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions.mapTypeId):** The default display type for google maps rendered by the plugin, will overwrite extension setting if set to anything but `inherit`              | `inherit` |
+| default_marker_icon  | `text/url`  | **Default marker icon:** An absolute URL either to an external resource (including schema and host) or to a local resource (starting with `/`) to use as default custom marker                                                                                     | `''`      |
 | default_info_options | `text/json` | **[SnazzyInfoWindow options](https://github.com/atmist/snazzy-info-window#options):** A json string that provides the default options for info windows rendered by the plugin                                                                                      | `''`      |
 | default_style        | `text/json` | **[`styles`](https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions.styles):** A json string that defines how the google map is rendered, only works if api key is set, will overwrite extension setting if set to anything but `''` | `''`      |
 
@@ -101,3 +102,33 @@ The plugin has to layouts:
 
 The extension adds a new ViewHelper.  
 The map view helper can be used to render a google map.
+
+### Maps specific attributes
+
+| Property         | Type      | Description                                                     | Default               |
+| ---------------- | --------- | --------------------------------------------------------------- | --------------------- |
+| places           | `array`   | A set of places to be placed on the map as markers              | `[]`                  |
+| as               | `string`  | The name for the iteration variable in the info window template | `'place'`             |
+| options          | `array`   | Configuration array for the map itself                          | `default_options`     |
+| mapStyles        | `array`   | Configuration array for the styles option of the map            | `default_style`       |
+| type             | `string`  | The type of map that should be displayed                        | `default_type`        |
+| zoom             | `integer` | The zoom of the map (between `1` and `18`)                      | `1`                   |
+| center           | `string`  | The center of the map (comma separated geo coordinates)         | `'0.0,0.0'`           |
+| enableInfo       | `boolean` | Enables/disables on click info windows                          | `true`                |
+| enableInfoSingle | `boolean` | Enables/disables multiple open info windows                     | `true`                |
+| infoOptions      | `array`   | Additional configuration for SnazzyInfoWindow instances         | `[]`                  |
+| markerIcon       | `string`  | Sets a custom marker icon for all markers on this map           | `default_marker_icon` |
+
+### Default tag attributes
+
+| Property             | Description                                                                                         |
+| -------------------- | --------------------------------------------------------------------------------------------------- |
+| class                | CSS class(es) for this element                                                                      |
+| dir                  | Text direction for this HTML element. Allowed strings: "ltr" (left to right), "rtl" (right to left) |
+| lang                 | Language for this element. Use short names specified in RFC 1766                                    |
+| style                | Individual CSS styles for this element                                                              |
+| title                | Tooltip text of element                                                                             |
+| accessKey            | Keyboard shortcut to access this element                                                            |
+| tabindex             | Specifies the tab order of this element                                                             |
+| onclick              | JavaScript evaluated for the onclick event                                                          |
+| additionalAttributes | An array of additional attributes for the maps container                                            |

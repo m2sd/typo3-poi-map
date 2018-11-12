@@ -5,6 +5,7 @@ namespace M2S\PoiMap\Controller;
 use M2S\PoiMap\Domain\Repository\CategoryRepository;
 use M2S\PoiMap\Domain\Repository\PlaceRepository;
 use TYPO3\CMS\Core\Database\QueryGenerator;
+use TYPO3\CMS\Core\Resource\ResourceFactory;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
@@ -55,7 +56,8 @@ class PlaceController extends ActionController
         $this->view->assignMultiple([
             'places' => $places,
             'mapStyles' => $this->getMapStyles(),
-            'mapType' => ($this->settings['appearance']['type'] ?: $this->settings['default_type'])
+            'mapType' => ($this->settings['appearance']['type'] ?: $this->settings['default_type']),
+            'markerIcon' => $this->getMarkerIcon()
         ]);
     }
 
@@ -75,6 +77,7 @@ class PlaceController extends ActionController
             'showInfo' => $this->settings['appearance']['showInfo'],
             'showInfoSingle' => $this->settings['appearance']['showInfoSingle'],
             'infoOptions' => $this->getInfoOptions() ?: [],
+            'markerIcon' => $this->getMarkerIcon(),
             'center' => $this->settings['appearance']['center'],
             'zoom' => $this->settings['appearance']['zoom']
         ]);
@@ -107,6 +110,23 @@ class PlaceController extends ActionController
         );
 
         return $style;
+    }
+
+    protected function getMarkerIcon(): string
+    {
+        if ($file = $this->settings['appearance']['markerIcon']) {
+            $resourceFactory = $this->objectManager->get(ResourceFactory::class);
+
+            if ($fileReference = $resourceFactory->getFileReferenceObject($this->settings['appearance']['markerIcon'])) {
+                return $fileReference->getPublicUrl();
+            }
+        }
+
+        if (GeneralUtility::validPathStr($this->settings['default_marker_icon'])) {
+            return $this->settings['default_marker_icon'];
+        }
+
+        return '';
     }
 
     /**

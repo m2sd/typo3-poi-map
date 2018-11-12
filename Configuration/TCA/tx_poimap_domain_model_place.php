@@ -333,6 +333,29 @@ return [
                 ],
             ], $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'])
         ],
+        'marker_icon' => [
+            'label' => $langFile . ':tx_poimap_domain_model_place.marker_icon',
+            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('marker_icon', [
+                'maxitems' => 1,
+                'appearance' => [
+                    'createNewRelationLinkTitle' => $langFile . ':tx_poimap_domain_model_place.marker_icon.create_record'
+                ],
+                'overrideChildTca' => [
+                    'types' => [
+                        '0' => [
+                            'showitem' => '
+                                --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
+                            'showitem' => '
+                                --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                --palette--;;filePalette'
+                        ]
+                    ],
+                ],
+            ], 'gif,jpg,jpeg,tif,tiff,bmp,png,svg')
+        ],
         'geo_coordinates' => [
             'label' => $langFile.':tx_poimap_domain_model_place.geo_coordinates',
             'config' => [
@@ -359,6 +382,7 @@ return [
                     url,
                 --div--;LLL:EXT:poi_map/Resources/Private/Language/locallang_tca.xlf:tab.images,
                     image,
+                    marker_icon,
                 --div--;LLL:EXT:poi_map/Resources/Private/Language/locallang_tca.xlf:tab.coordinates,
                     geo_coordinates,
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
