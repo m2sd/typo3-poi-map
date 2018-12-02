@@ -9,6 +9,10 @@ class PoiMap {
       GoogleMapsLoader.KEY = this.options.apiKey;
     }
 
+    if (this.options.language) {
+      GoogleMapsLoader.LANGUAGE = this.options.language;
+    }
+
     if (options.callbacks instanceof Array && options.callbacks.length) {
       this.init(options.callbacks);
     }

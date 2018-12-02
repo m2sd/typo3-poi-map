@@ -205,8 +205,10 @@ class ConfigurationUtility implements SingletonInterface
             $code .=        "apiKey:'{$this->maps_apiKey}',";
             /** @todo: uncomment on next major version */
             //$code .=      "excludeCss:{$this->maps_excludeCss},";
+            $code .=        'language:(d.body.dataset.m2sPoiMapLanguage || null),';
             $code .=        'callbacks:c';
             $code .=    '}));';
+            $code .=    "d.dispatchEvent(new Event('m2s:poi-map-initialized'));";
             $code .= '};';
 
             $code .= "(w.M2S && w.M2S.PoiMap && i())||d.addEventListener('m2s:poi-map-loaded',i);";
