@@ -5,6 +5,9 @@ maps.default_type = roadmap
 # cat=basic/color/a1; type=string; label=GoogleMaps style:A json string that defines how the google map is rendered, only works if api key is set (empty = default)
 maps.default_style =
 
+# cat=content/language/a1; type=boolean; label=Use Typo3 language:If set maps will be loaded using the language code from the typoscript configuration (by default google maps use the browser preferences to determine the display language)
+maps.use_typoscript_language = 0
+
 # cat=advanced/enable/a1; type=string; label=GoogleMaps API key for the backend wizard:Is ignored if 'wizard.use_frontend_api' is set
 wizard.api_key =
 # cat=advanced/enable/a2; type=boolean; label=Use frontend API key for backend wizard:If set the API key defined for the frontend implementation is used for the backend

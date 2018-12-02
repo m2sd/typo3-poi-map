@@ -37,6 +37,14 @@ Include the static typoscirpt in your root template or an extension template of 
 
 **Hint:** Visit [SnazzyMaps](https://snazzymaps.com/) for some awesome styles.
 
+#### Content settings
+
+| Setting                      | Type       | Description                                                                                                                                                                                         | Default |
+| ---------------------------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| maps.use_typoscript_language | `checkbox` | **Use Typo3 language:** If set maps will be loaded using the language code from the typoscript configuration (by default google maps use the browser preferences to determine the display language) | `false` |
+
+**ATTENTION:** Please be sure to set the [`config.language` property in your Typoscript](https://docs.typo3.org/typo3cms/TyposcriptReference/Setup/Config/Index.html#language) appropiately, if you want to use this setting
+
 #### Advanced Settings
 
 | Setting                 | Type        | Description                                                                                                                                                                                                                 | Default     |

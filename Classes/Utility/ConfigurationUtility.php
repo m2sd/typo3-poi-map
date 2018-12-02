@@ -205,7 +205,9 @@ class ConfigurationUtility implements SingletonInterface
             $code .=        "apiKey:'{$this->maps_apiKey}',";
             /** @todo: uncomment on next major version */
             //$code .=      "excludeCss:{$this->maps_excludeCss},";
-            $code .=        'language:(d.body.dataset.m2sPoiMapLanguage || null),';
+            if ($this->maps_useTyposcriptLanguage) {
+                $code .=    "language:'{$this->getFrontendController()->sys_language_isocode}',";
+            }
             $code .=        'callbacks:c';
             $code .=    '}));';
             $code .=    "d.dispatchEvent(new Event('m2s:poi-map-initialized'));";
@@ -233,26 +235,26 @@ class ConfigurationUtility implements SingletonInterface
     {
         if (isset($this->cache[$name])) {
             return $this->cache[$name];
-        } else {
-            $parts = explode('_', $name);
-            $last = GeneralUtility::camelCaseToLowerCaseUnderscored(array_pop($parts));
+        }
 
-            $configuration = $this->configuration;
-            foreach ($parts as $part) {
-                $part = GeneralUtility::camelCaseToLowerCaseUnderscored($part).'.';
-                if (isset($configuration[$part]) && is_array($configuration[$part])) {
-                    $configuration = $configuration[$part];
-                }
+        $parts = explode('_', $name);
+        $last = GeneralUtility::camelCaseToLowerCaseUnderscored(array_pop($parts));
+
+        $configuration = $this->configuration;
+        foreach ($parts as $part) {
+            $part = GeneralUtility::camelCaseToLowerCaseUnderscored($part).'.';
+            if (isset($configuration[$part]) && is_array($configuration[$part])) {
+                $configuration = $configuration[$part];
             }
-            if (isset($configuration[$last])) {
-                $this->cache[$name] = $configuration[$last];
+        }
+        if (isset($configuration[$last])) {
+            $this->cache[$name] = $configuration[$last];
+        } elseif (isset($configuration[$last.'.'])) {
+            $this->cache[$name] = $configuration[$last.'.'];
+        }
 
-                return $this->cache[$name];
-            } elseif (isset($configuration[$last.'.'])) {
-                $this->cache[$name] = $configuration[$last.'.'];
-
-                return $this->cache[$name];
-            }
+        if (isset($this->cache[$name])) {
+            return $this->cache[$name];
         }
 
         if (isset($this->configuration['strict']) && $this->configuration['strict']) {
@@ -270,5 +272,15 @@ class ConfigurationUtility implements SingletonInterface
     public static function isTypo3OlderThen9(): bool
     {
         return VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < 9000000;
+    }
+
+    /**
+     * Wrapper for the $GLOBALS['TSFE'] variable
+     *
+     * @return TypoScriptFrontendController
+     */
+    private function getFrontendController()
+    {
+        return $GLOBALS['TSFE'];
     }
 }
