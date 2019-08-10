@@ -13,9 +13,9 @@ defined('TYPO3_MODE') || die('Access denied.');
     $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][] = [
         'nodeName' => 'mapsPositionPicker',
         'priority' => 30,
-        'class' => \M2S\PoiMap\FormEngine\FieldWizard\MapsPositionPicker::class
+        'class' => \M2S\PoiMap\FormEngine\FieldWizard\MapsPositionPicker::class,
     ];
 
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_pagerenderer.php']['render-preProcess'][] =
-        \M2S\PoiMap\Utility\ConfigurationUtility::class.'->preRenderJsHook';
+        \M2S\PoiMap\Utility\ConfigurationUtility::class . '->preRenderJsHook';
 })();

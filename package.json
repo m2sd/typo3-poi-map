@@ -10,7 +10,9 @@
     "build:analyze": "npm run build -- --env.BUILD_ADDON analyze",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
-    "lint:check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
+    "lint:check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
+    "lint:commit": "npm run lint:check && npm run lint",
+    "release": "standard-version"
   },
   "repository": {
     "type": "git",
@@ -24,22 +26,42 @@
   },
   "homepage": "https://github.com/m2sd/typo3-poi-map#readme",
   "devDependencies": {
-    "@babel/core": "^7.1.5",
-    "@babel/preset-env": "^7.1.5",
-    "babel-eslint": "^10.0.1",
-    "babel-loader": "^8.0.4",
-    "css-loader": "^1.0.1",
-    "eslint": "^5.9.0",
-    "eslint-config-prettier": "^3.2.0",
-    "eslint-loader": "^2.1.1",
-    "eslint-plugin-prettier": "^3.0.0",
-    "prettier": "^1.15.2",
-    "style-loader": "^0.23.1",
-    "webpack": "^4.25.1",
-    "webpack-bundle-analyzer": "^3.0.3",
-    "webpack-cli": "^3.1.2"
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.1.0",
+    "babel-eslint": "^10.0.2",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "cz-conventional-changelog": "^3.0.2",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-loader": "^2.2.1",
+    "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^3.0.3",
+    "prettier": "^1.18.2",
+    "standard-version": "^7.0.0",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.39.1",
+    "webpack-bundle-analyzer": "^3.4.1",
+    "webpack-cli": "^3.3.6"
   },
   "dependencies": {
     "snazzy-info-window": "^1.1.1"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }

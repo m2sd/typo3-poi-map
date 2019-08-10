@@ -1,4 +1,6 @@
 <?php
+declare(strict_types = 1);
+
 /**
  * Created by PhpStorm.
  * User: main
@@ -266,7 +268,7 @@ class Place extends AbstractEntity
 
         return [
             'lat' => (float)$coordinates[0],
-            'lng' => (float)$coordinates[1]
+            'lng' => (float)$coordinates[1],
         ];
     }
 

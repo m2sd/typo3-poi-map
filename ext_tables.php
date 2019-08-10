@@ -15,13 +15,13 @@ defined('TYPO3_MODE') || die('Access denied.');
         'place-residence' => [],
         'place-landform' => [],
         'place-civic-structure' => [],
-        'place-administrative-area' => []
+        'place-administrative-area' => [],
     ];
     foreach ($icons as $identifier => $config) {
         if (is_string($config)) {
             $config = [
                 'path' => $config,
-                'provider' => \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class
+                'provider' => \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
             ];
         }
         if (!isset($config['path']) || !$config['path']) {
@@ -30,9 +30,9 @@ defined('TYPO3_MODE') || die('Access denied.');
         if (!isset($config['provider']) || !$config['provider']) {
             $config['provider'] = \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class;
         }
-
+ 
         $iconRegistry->registerIcon(
-            'tx-poimap-'.$identifier,
+            'tx-poimap-' . $identifier,
             $config['provider'],
             ['source' => $config['path']]
         );

@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace M2S\PoiMap\FormEngine\FieldWizard;
 
@@ -40,10 +40,10 @@ class MapsPositionPicker extends AbstractNode
 TEMPLATE;
 
         $result['requireJsModules'] = [
-            'TYPO3/CMS/PoiMap/PositionPicker'
+            'TYPO3/CMS/PoiMap/PositionPicker',
         ];
         $result['stylesheetFiles'] = [
-            'EXT:poi_map/Resources/Public/Css/PositionPicker.css'
+            'EXT:poi_map/Resources/Public/Css/PositionPicker.css',
         ];
 
         return $result;

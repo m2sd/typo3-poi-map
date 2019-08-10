@@ -1,4 +1,6 @@
 <?php
+declare(strict_types = 1);
+
 /**
  * Created by PhpStorm.
  * User: main
@@ -7,7 +9,6 @@
  */
 namespace M2S\PoiMap\ViewHelpers;
 
-use M2S\PoiMap\Domain\Model\Place;
 use M2S\PoiMap\GoogleMaps\Map;
 use M2S\PoiMap\GoogleMaps\Marker;
 use M2S\PoiMap\Utility\ConfigurationUtility;
@@ -188,12 +189,14 @@ class MapViewHelper extends AbstractViewHelper
         $map->enableInfoWindows($arguments['enableInfo'], $arguments['enableInfoSingle'], $arguments['infoOptions']);
         /** @var Place $place */
         foreach ($arguments['places'] as $place) {
-            if (count($position = $place->getLatLngArray())) {
+            $position = $place->getLatLngArray();
+            if (count($position)) {
                 $marker = new Marker($position);
 
                 if ($arguments['enableInfo']) {
                     $templateVariableContainer->add($arguments['as'], $place);
-                    if ($info = trim(preg_replace('/\\>\\s+\\</', '><', $renderChildrenClosure()))) {
+                    $info = trim(preg_replace('/\\>\\s+\\</', '><', $renderChildrenClosure()));
+                    if ($info) {
                         $marker->setInfoWindow($info);
                     } else {
                         $marker->setInfoWindow("<div class=\"tx-poimap-info\"><h3>{$place->getName()}</h3></div>");
@@ -201,7 +204,8 @@ class MapViewHelper extends AbstractViewHelper
                     $templateVariableContainer->remove($arguments['as']);
                 }
 
-                if ($customIcon = $place->getMarkerIcon()) {
+                $customIcon = $place->getMarkerIcon();
+                if ($customIcon) {
                     $customIcon = GeneralUtility::makeInstance(ImageService::class)->getImageUri($customIcon->getOriginalResource());
                     $marker->setOption('icon', $customIcon);
                 } elseif (GeneralUtility::validPathStr($arguments['markerIcon'])) {

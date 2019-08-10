@@ -1,4 +1,6 @@
 <?php
+declare(strict_types = 1);
+
 /**
  * Created by PhpStorm.
  * User: main
@@ -8,7 +10,7 @@
 
 namespace M2S\PoiMap\Domain\Model;
 
-use \TYPO3\CMS\Extbase\Domain\Model\Category as Base;
+use TYPO3\CMS\Extbase\Domain\Model\Category as Base;
 
 class Category extends Base
 {

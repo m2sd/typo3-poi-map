@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace M2S\PoiMap\Utility;
 
@@ -36,9 +36,9 @@ class ConfigurationUtility implements SingletonInterface
         'zoom' => 1,
         'center' => [
             'lat' => 0.0,
-            'lng' => 0.0
+            'lng' => 0.0,
         ],
-        'mapTypeId' => 'roadmap'
+        'mapTypeId' => 'roadmap',
     ];
 
     /**
@@ -60,17 +60,22 @@ class ConfigurationUtility implements SingletonInterface
         }
 
         $this->configuration = $configuration;
-        if ($defaults = $this->maps_defaultOptions) {
-            if (!($defaults = json_decode($defaults, true))) {
+        $defaults = $this->maps_defaultOptions;
+        if ($defaults) {
+            $defaults = json_decode($defaults, true);
+            if (!$defaults) {
                 throw new \InvalidArgumentException('Malformed json in \'maps.default_options\' extension setting.', 1539969078);
             }
             $this->setMapDefaults($defaults);
         }
-        if ($type = $this->maps_defaultType) {
+        $type = $this->maps_defaultType;
+        if ($type) {
             $this->overrideMapDefaults(['mapTypeId' => $type]);
         }
-        if ($style = $this->maps_defaultStyle) {
-            if (!($style = json_decode($style, true))) {
+        $style = $this->maps_defaultStyle;
+        if ($style) {
+            $style = json_decode($style, true);
+            if (!$style) {
                 throw new \InvalidArgumentException('Malformed json in \'maps.default_style\' extension setting.', 1539969078);
             }
             $this->overrideMapDefaults(['styles' => $style]);
@@ -188,14 +193,14 @@ class ConfigurationUtility implements SingletonInterface
                 'file' => 'EXT:poi_map/Resources/Public/JavaScript/PoiMapInit.min.js',
                 'section' => PageRenderer::PART_FOOTER,
                 'type' => 'text/javascript',
-                'async' => true
+                'async' => true,
             ];
 
             $signature = '';
             $code = "var c=[];";
             /** @var Map $map */
             foreach ($this->maps as $map) {
-                $signature .= $map->getId().';';
+                $signature .= $map->getId() . ';';
                 $code .= "c.push(function(){{$map->getJavaScript()}return {$map->getId()};});";
             }
 
@@ -218,7 +223,7 @@ class ConfigurationUtility implements SingletonInterface
 
             $assets['jsInline'][$signature] = [
                 'code' => GeneralUtility::minifyJavaScript($code),
-                'section' => PageRenderer::PART_FOOTER
+                'section' => PageRenderer::PART_FOOTER,
             ];
         }
     }
@@ -242,15 +247,15 @@ class ConfigurationUtility implements SingletonInterface
 
         $configuration = $this->configuration;
         foreach ($parts as $part) {
-            $part = GeneralUtility::camelCaseToLowerCaseUnderscored($part).'.';
+            $part = GeneralUtility::camelCaseToLowerCaseUnderscored($part) . '.';
             if (isset($configuration[$part]) && is_array($configuration[$part])) {
                 $configuration = $configuration[$part];
             }
         }
         if (isset($configuration[$last])) {
             $this->cache[$name] = $configuration[$last];
-        } elseif (isset($configuration[$last.'.'])) {
-            $this->cache[$name] = $configuration[$last.'.'];
+        } elseif (isset($configuration[$last . '.'])) {
+            $this->cache[$name] = $configuration[$last . '.'];
         }
 
         if (isset($this->cache[$name])) {

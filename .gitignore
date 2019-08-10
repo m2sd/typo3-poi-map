@@ -2,3 +2,5 @@
 .vscode
 vendor
 node_modules
+/typo3
+/index.php

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace M2S\PoiMap\Controller;
 
@@ -9,9 +10,6 @@ use TYPO3\CMS\Core\Resource\ResourceFactory;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
-use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
-use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
 class PlaceController extends ActionController
 {
@@ -58,7 +56,7 @@ class PlaceController extends ActionController
             'mapStyles' => $this->getMapStyles(),
             'mapType' => ($this->settings['appearance']['type'] ?: $this->settings['default_type']),
             'markerIcon' => $this->getMarkerIcon(),
-            'zoom' => $this->settings['appearance']['zoom']
+            'zoom' => $this->settings['appearance']['zoom'],
         ]);
     }
 
@@ -80,7 +78,7 @@ class PlaceController extends ActionController
             'infoOptions' => $this->getInfoOptions() ?: [],
             'markerIcon' => $this->getMarkerIcon(),
             'center' => $this->settings['appearance']['center'],
-            'zoom' => $this->settings['appearance']['zoom']
+            'zoom' => $this->settings['appearance']['zoom'],
         ]);
     }
 
@@ -91,9 +89,11 @@ class PlaceController extends ActionController
      */
     protected function getMapStyles(): ?array
     {
-        if (!$style = $this->settings['appearance']['style']) {
+        $style = $this->settings['appearance']['style'];
+        if (!$style) {
             $style = $this->settings['default_style'];
         }
+
         return json_decode($style, true);
     }
 
@@ -115,10 +115,11 @@ class PlaceController extends ActionController
 
     protected function getMarkerIcon(): string
     {
-        if ($file = $this->settings['appearance']['markerIcon']) {
+        if ($this->settings['appearance']['markerIcon']) {
             $resourceFactory = $this->objectManager->get(ResourceFactory::class);
 
-            if ($fileReference = $resourceFactory->getFileReferenceObject($this->settings['appearance']['markerIcon'])) {
+            $fileReference = $resourceFactory->getFileReferenceObject($this->settings['appearance']['markerIcon']);
+            if ($fileReference) {
                 return $fileReference->getPublicUrl();
             }
         }

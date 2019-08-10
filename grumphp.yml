@@ -1,0 +1,10 @@
+parameters:
+    git_dir: .
+    bin_dir: vendor/bin
+    hide_circumvention_tip: true
+    tasks:
+        npm_script:
+            script: lint:commit
+            triggered_by: [js]
+            is_run_task: true
+        phpcs: ~

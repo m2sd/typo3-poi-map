@@ -1,4 +1,6 @@
 <?php
+declare(strict_types = 1);
+
 /**
  * Created by PhpStorm.
  * User: main
@@ -82,7 +84,7 @@ abstract class AbstractElement implements ElementInterface
     public function getJavascript(): string
     {
         $options = count($this->options) ? json_encode($this->options) : '{}';
-        $class = str_replace(__NAMESPACE__.'\\', '', get_called_class());
+        $class = str_replace(__NAMESPACE__ . '\\', '', get_called_class());
 
         return "new google.maps.$class($options);";
     }

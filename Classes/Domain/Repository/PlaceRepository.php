@@ -1,4 +1,6 @@
 <?php
+declare(strict_types = 1);
+
 /**
  * Created by PhpStorm.
  * User: main
@@ -8,7 +10,6 @@
 
 namespace M2S\PoiMap\Domain\Repository;
 
-use M2S\PoiMap\Domain\Model\Category;
 use M2S\PoiMap\Domain\Model\Place;
 use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
@@ -27,7 +28,8 @@ class PlaceRepository extends Repository
     {
         $result = new ObjectStorage();
 
-        if ($records = $this->getCategorizedRecordsByCids($cids)) {
+        $records = $this->getCategorizedRecordsByCids($cids);
+        if (count($records)) {
             $records = $this->objectManager->get(DataMapper::class)->map(Place::class, $records);
             foreach ($records as $record) {
                 $result->attach($record);
@@ -73,7 +75,8 @@ class PlaceRepository extends Repository
             return $this->filterByCids($cids);
         }
 
-        if (count($records = $this->getCategorizedRecordsByCids($cids))) {
+        $records = $this->getCategorizedRecordsByCids($cids);
+        if (count($records)) {
             $objects = $this->objectManager->get(DataMapper::class)->map(
                 Place::class,
                 array_filter($records, function ($record) use ($pids) {

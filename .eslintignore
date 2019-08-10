@@ -5,3 +5,4 @@ node_modules
 Resources/Public/JavaScript/GoogleMapsLoader.js
 *.min.js
 *.html
+/typo3

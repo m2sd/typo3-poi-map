@@ -10,7 +10,7 @@ return [
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
-        'title' => $langFile.':tx_poimap_domain_model_place',
+        'title' => $langFile . ':tx_poimap_domain_model_place',
         'delete' => 'deleted',
         'versioningWS' => true,
         'origUid' => 't3_origuid',
@@ -27,7 +27,7 @@ return [
             'disabled' => 'hidden',
             'starttime' => 'starttime',
             'endtime' => 'endtime',
-            'fe_group' => 'fe_group'
+            'fe_group' => 'fe_group',
         ],
         'iconfile' => 'EXT:poi_map/Resources/Public/Icons/Types/Default.svg',
         'typeicon_column' => 'additional_type',
@@ -42,10 +42,10 @@ return [
             'CivicStructure' => 'tx-poimap-place-civic-structure',
             'AdministrativeArea' => 'tx-poimap-place-administrative-area',
         ],
-        'searchFields' => 'name,url,alternate_name,description'
+        'searchFields' => 'name,url,alternate_name,description',
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid,l10n_parent,l10n_diffsource,l10n_source,additional_type,name,alternate_name,description,disambiguating_description,image,url,starttime,endtime,fe_group'
+        'showRecordFieldList' => 'sys_language_uid,l10n_parent,l10n_diffsource,l10n_source,additional_type,name,alternate_name,description,disambiguating_description,image,url,starttime,endtime,fe_group',
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -59,11 +59,11 @@ return [
                     [
                         'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
                         -1,
-                        'flags-multiple'
+                        'flags-multiple',
                     ],
                 ],
                 'default' => 0,
-            ]
+            ],
         ],
         'l10n_parent' => [
             'exclude' => true,
@@ -75,32 +75,32 @@ return [
                 'items' => [
                     [
                         '',
-                        0
-                    ]
+                        0,
+                    ],
                 ],
                 'foreign_table' => 'tx_poimap_domain_model_place',
                 'foreign_table_where' => 'AND tx_poimap_domain_model_place.uid=###REC_FIELD_l10n_parent### AND tx_poimap_domain_model_place.sys_language_uid IN (-1,0)',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_source' => [
             'config' => [
-                'type' => 'passthrough'
-            ]
+                'type' => 'passthrough',
+            ],
         ],
         'l10n_diffsource' => [
             'config' => [
                 'type' => 'passthrough',
-                'default' => ''
-            ]
+                'default' => '',
+            ],
         ],
         't3ver_label' => [
             'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.versionLabel',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'max' => 255
-            ]
+                'max' => 255,
+            ],
         ],
         'hidden' => [
             'exclude' => true,
@@ -109,10 +109,10 @@ return [
                 'type' => 'check',
                 'items' => [
                     '1' => [
-                        '0' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:hidden.I.0'
-                    ]
-                ]
-            ]
+                        '0' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:hidden.I.0',
+                    ],
+                ],
+            ],
         ],
         'starttime' => [
             'exclude' => true,
@@ -121,10 +121,10 @@ return [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
                 'eval' => 'datetime,int',
-                'default' => 0
+                'default' => 0,
             ],
             'l10n_mode' => 'exclude',
-            'l10n_display' => 'defaultAsReadonly'
+            'l10n_display' => 'defaultAsReadonly',
         ],
         'endtime' => [
             'exclude' => true,
@@ -135,11 +135,11 @@ return [
                 'eval' => 'datetime,int',
                 'default' => 0,
                 'range' => [
-                    'upper' => mktime(0, 0, 0, 1, 1, 2038)
-                ]
+                    'upper' => mktime(0, 0, 0, 1, 1, 2038),
+                ],
             ],
             'l10n_mode' => 'exclude',
-            'l10n_display' => 'defaultAsReadonly'
+            'l10n_display' => 'defaultAsReadonly',
         ],
         'fe_group' => [
             'exclude' => true,
@@ -152,22 +152,22 @@ return [
                 'items' => [
                     [
                         'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.hide_at_login',
-                        -1
+                        -1,
                     ],
                     [
                         'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.any_login',
-                        -2
+                        -2,
                     ],
                     [
                         'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.usergroups',
-                        '--div--'
-                    ]
+                        '--div--',
+                    ],
                 ],
                 'exclusiveKeys' => '-1,-2',
                 'foreign_table' => 'fe_groups',
                 'foreign_table_where' => 'ORDER BY fe_groups.title',
-                'enableMultiSelectFilterTextfield' => true
-            ]
+                'enableMultiSelectFilterTextfield' => true,
+            ],
         ],
         'additional_type' => [
             'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.type',
@@ -177,59 +177,59 @@ return [
                 'renderType' => 'selectSingle',
                 'items' => [
                     [
-                        $langFile.':tx_poimap_domain_model_place.additional_type.I.0',
+                        $langFile . ':tx_poimap_domain_model_place.additional_type.I.0',
                         '',
-                        'tx-poimap-place-default'
+                        'tx-poimap-place-default',
                     ],
                     [
-                        $langFile.':tx_poimap_domain_model_place.additional_type.I.TouristAttraction',
+                        $langFile . ':tx_poimap_domain_model_place.additional_type.I.TouristAttraction',
                         'TouristAttraction',
-                        'tx-poimap-place-tourist-attraction'
+                        'tx-poimap-place-tourist-attraction',
                     ],
                     [
-                        $langFile.':tx_poimap_domain_model_place.additional_type.I.LandmarksOrHistoricalBuildings',
+                        $langFile . ':tx_poimap_domain_model_place.additional_type.I.LandmarksOrHistoricalBuildings',
                         'LandmarksOrHistoricalBuildings',
-                        'tx-poimap-place-landmarks-or-historical-buildings'
+                        'tx-poimap-place-landmarks-or-historical-buildings',
                     ],
                     [
-                        $langFile.':tx_poimap_domain_model_place.additional_type.I.Accommodation',
+                        $langFile . ':tx_poimap_domain_model_place.additional_type.I.Accommodation',
                         'Accommodation',
-                        'tx-poimap-place-accommodation'
+                        'tx-poimap-place-accommodation',
                     ],
                     [
-                        $langFile.':tx_poimap_domain_model_place.additional_type.I.LocalBusiness',
+                        $langFile . ':tx_poimap_domain_model_place.additional_type.I.LocalBusiness',
                         'LocalBusiness',
-                        'tx-poimap-place-local-business'
+                        'tx-poimap-place-local-business',
                     ],
                     [
-                        $langFile.':tx_poimap_domain_model_place.additional_type.I.Residence',
+                        $langFile . ':tx_poimap_domain_model_place.additional_type.I.Residence',
                         'Residence',
-                        'tx-poimap-place-residence'
+                        'tx-poimap-place-residence',
                     ],
                     [
-                        $langFile.':tx_poimap_domain_model_place.additional_type.I.Landform',
+                        $langFile . ':tx_poimap_domain_model_place.additional_type.I.Landform',
                         'Landform',
-                        'tx-poimap-place-landform'
+                        'tx-poimap-place-landform',
                     ],
                     [
-                        $langFile.':tx_poimap_domain_model_place.additional_type.I.CivicStructure',
+                        $langFile . ':tx_poimap_domain_model_place.additional_type.I.CivicStructure',
                         'CivicStructure',
-                        'tx-poimap-place-civic-structure'
+                        'tx-poimap-place-civic-structure',
                     ],
                     [
-                        $langFile.':tx_poimap_domain_model_place.additional_type.I.AdministrativeArea',
+                        $langFile . ':tx_poimap_domain_model_place.additional_type.I.AdministrativeArea',
                         'AdministrativeArea',
-                        'tx-poimap-place-administrative-area'
-                    ]
+                        'tx-poimap-place-administrative-area',
+                    ],
                 ],
                 'default' => '',
                 'authMode' => $GLOBALS['TYPO3_CONF_VARS']['BE']['explicitADmode'],
                 'authMode_enforce' => 'strict',
-            ]
+            ],
         ],
         'name' => [
             'l10n_mode' => 'prefixLangTitle',
-            'label' => $langFile.':tx_poimap_domain_model_place.name',
+            'label' => $langFile . ':tx_poimap_domain_model_place.name',
             'config' => [
                 'type' => 'input',
                 'size' => 50,
@@ -239,17 +239,17 @@ return [
         'alternate_name' => [
             'l10n_mode' => 'prefixLangTitle',
             'exclude' => true,
-            'label' => $langFile.':tx_poimap_domain_model_place.alternate_name',
+            'label' => $langFile . ':tx_poimap_domain_model_place.alternate_name',
             'config' => [
                 'type' => 'input',
                 'size' => 50,
                 'max' => 255,
-                'softref' => 'email[subst]'
-            ]
+                'softref' => 'email[subst]',
+            ],
         ],
         'url' => [
             'exclude' => true,
-            'label' => $langFile.':tx_poimap_domain_model_place.url',
+            'label' => $langFile . ':tx_poimap_domain_model_place.url',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputLink',
@@ -263,114 +263,114 @@ return [
                         ],
                     ],
                 ],
-                'softref' => 'typolink'
-            ]
+                'softref' => 'typolink',
+            ],
         ],
         'disambiguating_description' => [
             'exclude' => true,
-            'label' => $langFile.':tx_poimap_domain_model_place.disambiguating_description',
+            'label' => $langFile . ':tx_poimap_domain_model_place.disambiguating_description',
             'config' => [
                 'type' => 'text',
                 'cols' => 80,
                 'rows' => 15,
                 'enableRichtext' => true,
                 'richtextConfiguration' => 'default',
-                'softref' => 'typolink_tag,images,email[subst],url'
-            ]
+                'softref' => 'typolink_tag,images,email[subst],url',
+            ],
         ],
         'description' => [
             'l10n_mode' => 'prefixLangTitle',
-            'label' => $langFile.':tx_poimap_domain_model_place.description',
+            'label' => $langFile . ':tx_poimap_domain_model_place.description',
             'config' => [
                 'type' => 'text',
                 'cols' => 80,
                 'rows' => 15,
                 'enableRichtext' => true,
                 'richtextConfiguration' => 'default',
-                'softref' => 'typolink_tag,images,email[subst],url'
-            ]
+                'softref' => 'typolink_tag,images,email[subst],url',
+            ],
         ],
         'image' => [
-            'label' => $langFile.':tx_poimap_domain_model_place.image',
+            'label' => $langFile . ':tx_poimap_domain_model_place.image',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('image', [
                 'maxitems' => 1,
                 'appearance' => [
-                    'createNewRelationLinkTitle' => $langFile.':tx_poimap_domain_model_place.image.create_record'
+                    'createNewRelationLinkTitle' => $langFile . ':tx_poimap_domain_model_place.image.create_record',
                 ],
                 'overrideChildTca' => [
                     'types' => [
                         '0' => [
                             'showitem' => '
                                 --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                --palette--;;filePalette'
+                                --palette--;;filePalette',
                         ],
                         \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
                             'showitem' => '
                                 --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                --palette--;;filePalette'
+                                --palette--;;filePalette',
                         ],
                         \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
                             'showitem' => '
                                 --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                --palette--;;filePalette'
+                                --palette--;;filePalette',
                         ],
                         \TYPO3\CMS\Core\Resource\File::FILETYPE_AUDIO => [
                             'showitem' => '
                                 --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.audioOverlayPalette;audioOverlayPalette,
-                                --palette--;;filePalette'
+                                --palette--;;filePalette',
                         ],
                         \TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => [
                             'showitem' => '
                                 --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.videoOverlayPalette;videoOverlayPalette,
-                                --palette--;;filePalette'
+                                --palette--;;filePalette',
                         ],
                         \TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => [
                             'showitem' => '
                                 --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                --palette--;;filePalette'
-                        ]
+                                --palette--;;filePalette',
+                        ],
                     ],
                 ],
-            ], $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'])
+            ], $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']),
         ],
         'marker_icon' => [
             'label' => $langFile . ':tx_poimap_domain_model_place.marker_icon',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('marker_icon', [
                 'maxitems' => 1,
                 'appearance' => [
-                    'createNewRelationLinkTitle' => $langFile . ':tx_poimap_domain_model_place.marker_icon.create_record'
+                    'createNewRelationLinkTitle' => $langFile . ':tx_poimap_domain_model_place.marker_icon.create_record',
                 ],
                 'overrideChildTca' => [
                     'types' => [
                         '0' => [
                             'showitem' => '
                                 --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                --palette--;;filePalette'
+                                --palette--;;filePalette',
                         ],
                         \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
                             'showitem' => '
                                 --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                --palette--;;filePalette'
-                        ]
+                                --palette--;;filePalette',
+                        ],
                     ],
                 ],
-            ], 'gif,jpg,jpeg,tif,tiff,bmp,png,svg')
+            ], 'gif,jpg,jpeg,tif,tiff,bmp,png,svg'),
         ],
         'geo_coordinates' => [
-            'label' => $langFile.':tx_poimap_domain_model_place.geo_coordinates',
+            'label' => $langFile . ':tx_poimap_domain_model_place.geo_coordinates',
             'config' => [
                 'type' => 'input',
                 'size' => 100,
                 'max' => 50,
                 'fieldWizard' => [
                     'mapsPositionPicker' => [
-                        'renderType' => 'mapsPositionPicker'
-                    ]
-                ]
+                        'renderType' => 'mapsPositionPicker',
+                    ],
+                ],
             ],
             'l10n_mode' => 'exclude',
-            'l10n_display' => 'defaultAsReadonly'
-        ]
+            'l10n_display' => 'defaultAsReadonly',
+        ],
     ],
     'types' => [
         '1' => [
@@ -392,8 +392,8 @@ return [
                     --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.access;access,
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:categories,
                     categories
-            '
-        ]
+            ',
+        ],
     ],
     'palettes' => [
         'names' => [
@@ -429,6 +429,6 @@ return [
                 fe_group;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:fe_group_formlabel,
                 --linebreak--,editlock
             ',
-        ]
-    ]
+        ],
+    ],
 ];

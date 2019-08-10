@@ -6,6 +6,6 @@
     [
         'position' => 'replace:categories',
         'l10n_mode' => 'exclude',
-        'l10n_display' => 'defaultAsReadonly'
+        'l10n_display' => 'defaultAsReadonly',
     ]
 );

@@ -1,4 +1,6 @@
 <?php
+declare(strict_types = 1);
+
 /**
  * Created by PhpStorm.
  * User: main
@@ -127,14 +129,17 @@ class Map extends AbstractElement
         ];
         /** @var Marker $marker */
         foreach ($this->markers as $marker) {
-            if ($coordinates = $marker->getPosition()) {
+            $coordinates = $marker->getPosition();
+            if ($coordinates) {
                 $id = $marker->getId();
                 $markerPositions[] = $coordinates;
 
                 $markerJs = "var $id={$marker->getJavascript()}";
                 $markerJs .= "$id.setMap({$this->id});";
 
+                // phpcs:disable SlevomatCodingStandard.ControlStructures.AssignmentInCondition.AssignmentInCondition
                 if ($this->infoWindows && $info = $marker->getInfoWindow()) {
+                // phpcs:enable SlevomatCodingStandard.ControlStructures.AssignmentInCondition.AssignmentInCondition
                     $windowOptions = count($this->infoWindowsOptions) ? json_encode($this->infoWindowsOptions) : '{}';
                     $markerJs .= "$id.__iw=new SnazzyInfoWindow(Object.assign($windowOptions, {";
                     $markerJs .=    "marker:$id,";

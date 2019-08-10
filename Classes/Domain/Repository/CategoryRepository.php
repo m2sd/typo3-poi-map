@@ -1,4 +1,6 @@
 <?php
+declare(strict_types = 1);
+
 /**
  * Created by PhpStorm.
  * User: main
@@ -8,9 +10,8 @@
 
 namespace M2S\PoiMap\Domain\Repository;
 
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository as BaseRepository;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
-use \TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository as BaseRepository;
 
 class CategoryRepository extends BaseRepository
 {
@@ -30,7 +31,8 @@ class CategoryRepository extends BaseRepository
 
         $result = new ObjectStorage();
         foreach ($uids as $uid) {
-            if ($category = $this->findByUid($uid)) {
+            $category = $this->findByUid($uid);
+            if ($category) {
                 $result->attach($category);
             }
         }

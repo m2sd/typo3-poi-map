@@ -11,6 +11,26 @@
     "points of interest"
   ],
   "license": "GPL-2.0-or-later",
+  "scripts": {
+    "pre-install-cmd": [
+      "@huskyBackup"
+    ],
+    "pre-update-cmd": [
+      "@huskyBackup"
+    ],
+    "post-install-cmd": [
+      "@huskyRestore"
+    ],
+    "post-update-cmd": [
+      "@huskyRestore"
+    ],
+    "huskyBackup": [
+      "if [ -f .git/hooks/commit-msg ]; then mv .git/hooks/commit-msg .git/hooks/commit-msg.husky; fi"
+    ],
+    "huskyRestore": [
+      "if [ -f .git/hooks/commit-msg.husky ]; then mv .git/hooks/commit-msg.husky .git/hooks/commit-msg; elif [ -f .git/hooks/commit-msg ] && [[ -z $(cat .git/hooks/commit-msg | grep husky) ]]; then rm .git/hooks/commit-msg; fi"
+    ]
+  },
   "authors": [
     {
       "name": "Michael Marcenich",
@@ -30,8 +50,18 @@
       "M2S\\PoiMap\\": "Classes/"
     }
   },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "poi_map"
+    }
+  },
   "replace": {
-    "poi_map": "self.version",
     "typo3-ter/poi_map": "self.version"
+  },
+  "require-dev": {
+    "phpro/grumphp": "^0.15.2",
+    "squizlabs/php_codesniffer": "^3.4",
+    "cakephp/cakephp-codesniffer": "^3.1",
+    "slevomat/coding-standard": "^5.0"
   }
 }
